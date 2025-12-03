@@ -1,7 +1,7 @@
-///  Admin Product Category models from @medusajs/types v2.10.1
-///
-/// Comprehensive product category management models following Medusa v2.10 specifications.
-/// Covers hierarchical category structures, product associations, and catalog organization for structured product taxonomy.
+// Admin Product Category models from @medusajs/types v2.10.1
+//
+// Comprehensive product category management models following Medusa v2.10 specifications.
+// Covers hierarchical category structures, product associations, and catalog organization for structured product taxonomy.
 
 import 'package:json_annotation/json_annotation.dart';
 

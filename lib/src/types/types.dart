@@ -5,15 +5,15 @@ export '../query/query_builder.dart';
 /// Configuration for the Medusa SDK
 class MedusaConfig {
   final String baseUrl;
-  final Map<String, String>? globalHeaders;
+  final Map<String, dynamic>? globalHeaders;
   final String? publishableKey;
   final String? apiKey;
   final AuthConfig? auth;
   final Logger? logger;
-  final bool debug;
   final Duration? timeout;
   final int maxRetries;
   final Duration retryDelay;
+  final bool debug;
 
   const MedusaConfig({
     required this.baseUrl,
@@ -22,24 +22,24 @@ class MedusaConfig {
     this.apiKey,
     this.auth,
     this.logger,
-    this.debug = false,
     this.timeout,
     this.maxRetries = 3,
     this.retryDelay = const Duration(milliseconds: 1000),
+    this.debug = false,
   });
 
   /// Create a copy of the config with updated values
   MedusaConfig copyWith({
     String? baseUrl,
-    Map<String, String>? globalHeaders,
+    Map<String, dynamic>? globalHeaders,
     String? publishableKey,
     String? apiKey,
     AuthConfig? auth,
     Logger? logger,
-    bool? debug,
     Duration? timeout,
     int? maxRetries,
     Duration? retryDelay,
+    bool? debug,
   }) {
     return MedusaConfig(
       baseUrl: baseUrl ?? this.baseUrl,
@@ -48,10 +48,10 @@ class MedusaConfig {
       apiKey: apiKey ?? this.apiKey,
       auth: auth ?? this.auth,
       logger: logger ?? this.logger,
-      debug: debug ?? this.debug,
       timeout: timeout ?? this.timeout,
       maxRetries: maxRetries ?? this.maxRetries,
       retryDelay: retryDelay ?? this.retryDelay,
+      debug: debug ?? this.debug,
     );
   }
 }
@@ -110,7 +110,7 @@ abstract class CustomStorage {
 }
 
 /// HTTP headers type
-typedef ClientHeaders = Map<String, String>;
+typedef ClientHeaders = Map<String, dynamic>;
 
 /// Query parameters type
 typedef QueryParams = Map<String, dynamic>;

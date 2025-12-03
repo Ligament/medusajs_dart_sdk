@@ -15,20 +15,17 @@ Discount _$DiscountFromJson(Map<String, dynamic> json) => Discount(
   parentDiscountId: json['parent_discount_id'] as String?,
   usageLimit: (json['usage_limit'] as num?)?.toInt(),
   usageCount: (json['usage_count'] as num?)?.toInt() ?? 0,
-  startsAt:
-      json['starts_at'] == null
-          ? null
-          : DateTime.parse(json['starts_at'] as String),
-  endsAt:
-      json['ends_at'] == null
-          ? null
-          : DateTime.parse(json['ends_at'] as String),
+  startsAt: json['starts_at'] == null
+      ? null
+      : DateTime.parse(json['starts_at'] as String),
+  endsAt: json['ends_at'] == null
+      ? null
+      : DateTime.parse(json['ends_at'] as String),
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 

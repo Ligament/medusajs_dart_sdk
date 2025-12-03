@@ -1,12 +1,12 @@
 name: medusajs_dart_sdk
 description: "A Dart SDK for MedusaJS - an open-source headless commerce platform"
-version: 2.10.1
+version: 2.11.3
 homepage: https://github.com/Ligament/medusajs-dart-sdk
 repository: https://github.com/Ligament/medusajs-dart-sdk
 issue_tracker: https://github.com/Ligament/medusajs-dart-sdk/issues
 
 environment:
-  sdk: ^3.7.2
+  sdk: ^3.8.0
 
 dependencies:
   http: ^1.2.1
@@ -16,7 +16,8 @@ dev_dependencies:
   test: ^1.25.2
   build_runner: ^2.4.12
   json_serializable: ^6.8.0
-  lints: ^4.0.0
+  path: ^1.9.0
+  lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

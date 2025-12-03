@@ -19,9 +19,10 @@ class AdminPluginResource extends AdminResource {
       headers: headers,
     );
 
-    final plugins = (response['plugins'] as List? ?? [])
-        .map((json) => json as Map<String, dynamic>)
-        .toList();
+    final plugins =
+        (response['plugins'] as List? ?? [])
+            .map((json) => json as Map<String, dynamic>)
+            .toList();
 
     return PaginatedResponse(
       data: plugins,

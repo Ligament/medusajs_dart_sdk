@@ -588,9 +588,9 @@ class StoreProductType {
   const StoreProductType({required this.id, required this.value});
 
   factory StoreProductType.fromJson(Map<String, dynamic> json) =>
-      StoreProductType(id: json['id'], value: json['value']);
+      _$StoreProductTypeFromJson(json);
 
-  Map<String, dynamic> toJson() => {'id': id, 'value': value};
+  Map<String, dynamic> toJson() => _$StoreProductTypeToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -601,9 +601,9 @@ class StoreProductTag {
   const StoreProductTag({required this.id, required this.value});
 
   factory StoreProductTag.fromJson(Map<String, dynamic> json) =>
-      StoreProductTag(id: json['id'], value: json['value']);
+      _$StoreProductTagFromJson(json);
 
-  Map<String, dynamic> toJson() => {'id': id, 'value': value};
+  Map<String, dynamic> toJson() => _$StoreProductTagToJson(this);
 }
 
 /// Store Product response wrapper

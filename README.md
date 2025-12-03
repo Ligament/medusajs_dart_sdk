@@ -6,10 +6,11 @@ A comprehensive Dart SDK for [Medusa.js](https://medusajs.com), the open-source 
 
 ## Features
 
-- 🚀 **Complete API Coverage** - Full support for Medusa v2.10.1 APIs
+- 🚀 **Complete API Coverage** - Full support for Medusa v2.11.3 APIs
 - 🔐 **Authentication** - Built-in auth management with automatic token handling
 - 🛍️ **Store Operations** - Products, collections, carts, orders, and more
 - ⚙️ **Admin Operations** - Full admin API support for backend management
+- 🧩 **View Configurations** - Admin view builder APIs with column metadata
 - 📦 **Shipping Option Types** - New v2.10 shipping categorization support
 - 🗑️ **Deleted Records Query** - Query deleted records with `withDeleted()` flag
 - 📱 **Flutter Ready** - Works seamlessly with Flutter applications
@@ -18,7 +19,27 @@ A comprehensive Dart SDK for [Medusa.js](https://medusajs.com), the open-source 
 - 🎯 **Type Safety** - Fully typed models with JSON serialization
 - 🪝 **Webhooks** - Easy webhook signature verification
 - 📊 **Batch Operations** - Efficient bulk operations support
-- ⚡ **Performance Optimized** - Improved cart operations performance (v2.10.1)
+- ⚡ **Performance Optimized** - Improved cart + admin operations performance (v2.11.3)
+
+## Project Structure
+
+- `lib/` – Core SDK implementation (HTTP client, admin/store/auth modules, models, utilities)
+- `example/` – Actively maintained sample apps (`store_customer_address_demo.dart`, `store_fulfillment_demo.dart`, etc.)
+- `test/` – Current regression suite (admin/basic/auth/integration/store)
+- `archive/` – Historical material moved out of the main workflow  
+  - `archive/docs/` – legacy “PHASE_*” reports, deployment notes, store module readiness docs  
+  - `archive/examples/` – deprecated demos (`phase_*`, `v2_10_*`, debug helpers, etc.)  
+  - `archive/tests/` – exploratory parsing/debug tests removed from default `dart test` runs  
+  - `archive/lib/` – unused experimental engines (`phase_7_*`, `phase_11_*`, …) kept for reference  
+- `archive/vendor/` – vendored copies of the JS SDK tarball and extracted sources
+
+This layout keeps the active SDK surface lean while preserving historical assets for anyone who still needs them.
+
+## Examples
+
+- `example/medusa_service_provider.dart` – a store-only provider that wires up the SDK’s MedusaStore/Auth/Realt-ime helpers, performs warm-up health checks, and walks through a cart flow (configure `MEDUSA_BASE_URL`/`MEDUSA_PUBLISHABLE_KEY` env vars before running).
+- `example/comprehensive_product_example.dart` – product-centric data retrieval walkthrough.
+- `example/store_customer_address_demo.dart` / `example/store_fulfillment_demo.dart` – focused demos for customer address and fulfillment flows.
 
 ## Installation
 
@@ -137,10 +158,10 @@ final cache = MedusaCache(
 final medusa = Medusa(config, cache: cache);
 ```
 
-### Query Building (v2.10.1 Features)
+### Query Building (v2.10+ Features)
 
 ```dart
-// Use withDeleted() to include soft-deleted records (v2.10.1)
+// Use withDeleted() to include soft-deleted records (v2.10+)
 final query = QueryBuilder()
   .expand(['variants', 'images'])
   .limit(20)
@@ -166,7 +187,7 @@ final advancedQuery = QueryBuilder()
 ### Flexible API Parameters
 
 ```dart
-// v2.10.1 supports more flexible API calls with Map<String, dynamic>
+// v2.10+ supports more flexible API calls with Map<String, dynamic>
 // This allows for custom attributes and dynamic fields
 
 // Create product with custom metadata
@@ -304,13 +325,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-This SDK is based on the official [Medusa.js JavaScript SDK](https://www.npmjs.com/package/@medusajs/js-sdk) v2.10.1 and follows the same API structure and conventions.
+This SDK is based on the official [Medusa.js JavaScript SDK](https://www.npmjs.com/package/@medusajs/js-sdk) v2.11.3 and follows the same API structure and conventions.
 
-**Version 2.10.1 Features:**
-- Performance improvements for cart operations (regression fix)
-- Enhanced `withDeleted()` query support for soft-deleted records
-- Improved flexible parameter handling with `Map<String, dynamic>`
-- Shipping option types management introduced in v2.10
-- Better error handling and API response compatibility
+**Version 2.11.3 Highlights:**
+- Admin Views API (columns metadata + configuration CRUD) with typed responses
+- Updated HTTP client/config to mirror JS SDK behaviour (debug flag, Basic API key auth, recursive query encoding, session-aware headers)
+- Store cart/order responses now return strongly-typed models for completion + line-item deletion flows
+- Admin resource surface fully enabled (fulfillment, payment, payment collection, user) with real-time stats/availability helpers
+- Documentation + changelog refreshed to reflect v2.11.3 parity
 
 Special thanks to the Medusa.js team for their excellent API design and the open-source community for their contributions.

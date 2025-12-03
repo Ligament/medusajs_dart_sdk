@@ -19,9 +19,10 @@ class AdminTaxRegionResource extends AdminResource {
       headers: headers,
     );
 
-    final items = (response['tax_regions'] as List? ?? [])
-        .map((json) => json as Map<String, dynamic>)
-        .toList();
+    final items =
+        (response['tax_regions'] as List? ?? [])
+            .map((json) => json as Map<String, dynamic>)
+            .toList();
 
     return PaginatedResponse(
       data: items,
@@ -172,9 +173,10 @@ class AdminTaxRegionResource extends AdminResource {
       headers: headers,
     );
 
-    final items = (response['tax_providers'] as List? ?? [])
-        .map((json) => json as Map<String, dynamic>)
-        .toList();
+    final items =
+        (response['tax_providers'] as List? ?? [])
+            .map((json) => json as Map<String, dynamic>)
+            .toList();
 
     return PaginatedResponse(
       data: items,

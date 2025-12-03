@@ -1,7 +1,7 @@
-///  Admin Sales Channel models from @medusajs/types v2.10.1
-///
-/// Comprehensive sales channel management models following Medusa v2.10 specifications.
-/// Covers sales channels, product associations, and channel-based commerce operations.
+// Admin Sales Channel models from @medusajs/types v2.10.1
+//
+// Comprehensive sales channel management models following Medusa v2.10 specifications.
+// Covers sales channels, product associations, and channel-based commerce operations.
 
 import 'package:json_annotation/json_annotation.dart';
 

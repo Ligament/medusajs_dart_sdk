@@ -85,10 +85,7 @@ class AdminApiKeyResource extends AdminResource {
   }
 
   /// Revoke an API key
-  Future<ApiKey?> revoke(
-    String id, {
-    ClientHeaders? headers,
-  }) async {
+  Future<ApiKey?> revoke(String id, {ClientHeaders? headers}) async {
     return await updateGeneric<ApiKey>(
       id: id,
       body: {'revoked_at': DateTime.now().toIso8601String()},

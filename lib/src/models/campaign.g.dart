@@ -12,25 +12,21 @@ Campaign _$CampaignFromJson(Map<String, dynamic> json) => Campaign(
   description: json['description'] as String?,
   currencyCode: json['currency_code'] as String?,
   status: $enumDecode(_$CampaignStatusEnumMap, json['status']),
-  budget:
-      json['budget'] == null
-          ? null
-          : CampaignBudget.fromJson(json['budget'] as Map<String, dynamic>),
-  startsAt:
-      json['starts_at'] == null
-          ? null
-          : DateTime.parse(json['starts_at'] as String),
-  endsAt:
-      json['ends_at'] == null
-          ? null
-          : DateTime.parse(json['ends_at'] as String),
+  budget: json['budget'] == null
+      ? null
+      : CampaignBudget.fromJson(json['budget'] as Map<String, dynamic>),
+  startsAt: json['starts_at'] == null
+      ? null
+      : DateTime.parse(json['starts_at'] as String),
+  endsAt: json['ends_at'] == null
+      ? null
+      : DateTime.parse(json['ends_at'] as String),
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$CampaignToJson(Campaign instance) => <String, dynamic>{
@@ -80,18 +76,15 @@ CreateCampaignRequest _$CreateCampaignRequestFromJson(
   description: json['description'] as String?,
   currencyCode: json['currency_code'] as String?,
   status: $enumDecodeNullable(_$CampaignStatusEnumMap, json['status']),
-  budget:
-      json['budget'] == null
-          ? null
-          : CampaignBudget.fromJson(json['budget'] as Map<String, dynamic>),
-  startsAt:
-      json['starts_at'] == null
-          ? null
-          : DateTime.parse(json['starts_at'] as String),
-  endsAt:
-      json['ends_at'] == null
-          ? null
-          : DateTime.parse(json['ends_at'] as String),
+  budget: json['budget'] == null
+      ? null
+      : CampaignBudget.fromJson(json['budget'] as Map<String, dynamic>),
+  startsAt: json['starts_at'] == null
+      ? null
+      : DateTime.parse(json['starts_at'] as String),
+  endsAt: json['ends_at'] == null
+      ? null
+      : DateTime.parse(json['ends_at'] as String),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 
@@ -115,18 +108,15 @@ UpdateCampaignRequest _$UpdateCampaignRequestFromJson(
   description: json['description'] as String?,
   currencyCode: json['currency_code'] as String?,
   status: $enumDecodeNullable(_$CampaignStatusEnumMap, json['status']),
-  budget:
-      json['budget'] == null
-          ? null
-          : CampaignBudget.fromJson(json['budget'] as Map<String, dynamic>),
-  startsAt:
-      json['starts_at'] == null
-          ? null
-          : DateTime.parse(json['starts_at'] as String),
-  endsAt:
-      json['ends_at'] == null
-          ? null
-          : DateTime.parse(json['ends_at'] as String),
+  budget: json['budget'] == null
+      ? null
+      : CampaignBudget.fromJson(json['budget'] as Map<String, dynamic>),
+  startsAt: json['starts_at'] == null
+      ? null
+      : DateTime.parse(json['starts_at'] as String),
+  endsAt: json['ends_at'] == null
+      ? null
+      : DateTime.parse(json['ends_at'] as String),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 

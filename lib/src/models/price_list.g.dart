@@ -17,10 +17,9 @@ MoneyAmount _$MoneyAmountFromJson(Map<String, dynamic> json) => MoneyAmount(
   regionId: json['region_id'] as String?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$MoneyAmountToJson(MoneyAmount instance) =>
@@ -45,10 +44,9 @@ CustomerGroup _$CustomerGroupFromJson(Map<String, dynamic> json) =>
       metadata: json['metadata'] as Map<String, dynamic>?,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
-      deletedAt:
-          json['deleted_at'] == null
-              ? null
-              : DateTime.parse(json['deleted_at'] as String),
+      deletedAt: json['deleted_at'] == null
+          ? null
+          : DateTime.parse(json['deleted_at'] as String),
     );
 
 Map<String, dynamic> _$CustomerGroupToJson(CustomerGroup instance) =>
@@ -67,29 +65,24 @@ PriceList _$PriceListFromJson(Map<String, dynamic> json) => PriceList(
   description: json['description'] as String?,
   type: $enumDecode(_$PriceListTypeEnumMap, json['type']),
   status: $enumDecode(_$PriceListStatusEnumMap, json['status']),
-  startsAt:
-      json['starts_at'] == null
-          ? null
-          : DateTime.parse(json['starts_at'] as String),
-  endsAt:
-      json['ends_at'] == null
-          ? null
-          : DateTime.parse(json['ends_at'] as String),
-  prices:
-      (json['prices'] as List<dynamic>?)
-          ?.map((e) => MoneyAmount.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  customerGroups:
-      (json['customer_groups'] as List<dynamic>?)
-          ?.map((e) => CustomerGroup.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  startsAt: json['starts_at'] == null
+      ? null
+      : DateTime.parse(json['starts_at'] as String),
+  endsAt: json['ends_at'] == null
+      ? null
+      : DateTime.parse(json['ends_at'] as String),
+  prices: (json['prices'] as List<dynamic>?)
+      ?.map((e) => MoneyAmount.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  customerGroups: (json['customer_groups'] as List<dynamic>?)
+      ?.map((e) => CustomerGroup.fromJson(e as Map<String, dynamic>))
+      .toList(),
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$PriceListToJson(PriceList instance) => <String, dynamic>{
@@ -125,18 +118,15 @@ CreatePriceListRequest _$CreatePriceListRequestFromJson(
   description: json['description'] as String?,
   type: $enumDecode(_$PriceListTypeEnumMap, json['type']),
   status: $enumDecodeNullable(_$PriceListStatusEnumMap, json['status']),
-  startsAt:
-      json['starts_at'] == null
-          ? null
-          : DateTime.parse(json['starts_at'] as String),
-  endsAt:
-      json['ends_at'] == null
-          ? null
-          : DateTime.parse(json['ends_at'] as String),
-  customerGroupIds:
-      (json['customer_group_ids'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+  startsAt: json['starts_at'] == null
+      ? null
+      : DateTime.parse(json['starts_at'] as String),
+  endsAt: json['ends_at'] == null
+      ? null
+      : DateTime.parse(json['ends_at'] as String),
+  customerGroupIds: (json['customer_group_ids'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 
@@ -159,18 +149,15 @@ UpdatePriceListRequest _$UpdatePriceListRequestFromJson(
   name: json['name'] as String?,
   description: json['description'] as String?,
   status: $enumDecodeNullable(_$PriceListStatusEnumMap, json['status']),
-  startsAt:
-      json['starts_at'] == null
-          ? null
-          : DateTime.parse(json['starts_at'] as String),
-  endsAt:
-      json['ends_at'] == null
-          ? null
-          : DateTime.parse(json['ends_at'] as String),
-  customerGroupIds:
-      (json['customer_group_ids'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
+  startsAt: json['starts_at'] == null
+      ? null
+      : DateTime.parse(json['starts_at'] as String),
+  endsAt: json['ends_at'] == null
+      ? null
+      : DateTime.parse(json['ends_at'] as String),
+  customerGroupIds: (json['customer_group_ids'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 
@@ -196,10 +183,9 @@ Map<String, dynamic> _$PriceListResponseToJson(PriceListResponse instance) =>
 
 PriceListsResponse _$PriceListsResponseFromJson(Map<String, dynamic> json) =>
     PriceListsResponse(
-      priceLists:
-          (json['price_lists'] as List<dynamic>)
-              .map((e) => PriceList.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      priceLists: (json['price_lists'] as List<dynamic>)
+          .map((e) => PriceList.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),

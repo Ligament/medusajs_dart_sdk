@@ -54,7 +54,9 @@ class AdminNotificationResource extends AdminResource {
     );
 
     final notificationData = response['notification'] as Map<String, dynamic>?;
-    return notificationData != null ? Notification.fromJson(notificationData) : null;
+    return notificationData != null
+        ? Notification.fromJson(notificationData)
+        : null;
   }
 
   /// Mark notification as read
@@ -71,7 +73,9 @@ class AdminNotificationResource extends AdminResource {
     );
 
     final notificationData = response['notification'] as Map<String, dynamic>?;
-    return notificationData != null ? Notification.fromJson(notificationData) : null;
+    return notificationData != null
+        ? Notification.fromJson(notificationData)
+        : null;
   }
 
   /// Mark notification as unread
@@ -88,7 +92,9 @@ class AdminNotificationResource extends AdminResource {
     );
 
     final notificationData = response['notification'] as Map<String, dynamic>?;
-    return notificationData != null ? Notification.fromJson(notificationData) : null;
+    return notificationData != null
+        ? Notification.fromJson(notificationData)
+        : null;
   }
 
   /// Get notifications by event

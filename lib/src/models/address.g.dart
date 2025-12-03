@@ -20,14 +20,12 @@ Address _$AddressFromJson(Map<String, dynamic> json) => Address(
   postalCode: json['postal_code'] as String?,
   phone: json['phone'] as String?,
   metadata: json['metadata'] as Map<String, dynamic>?,
-  createdAt:
-      json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
-  updatedAt:
-      json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
+  createdAt: json['created_at'] == null
+      ? null
+      : DateTime.parse(json['created_at'] as String),
+  updatedAt: json['updated_at'] == null
+      ? null
+      : DateTime.parse(json['updated_at'] as String),
 );
 
 Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{

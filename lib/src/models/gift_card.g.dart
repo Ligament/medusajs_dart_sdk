@@ -14,16 +14,14 @@ GiftCard _$GiftCardFromJson(Map<String, dynamic> json) => GiftCard(
   regionId: json['region_id'] as String?,
   orderId: json['order_id'] as String?,
   isDisabled: json['is_disabled'] as bool? ?? false,
-  endsAt:
-      json['ends_at'] == null
-          ? null
-          : DateTime.parse(json['ends_at'] as String),
+  endsAt: json['ends_at'] == null
+      ? null
+      : DateTime.parse(json['ends_at'] as String),
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 

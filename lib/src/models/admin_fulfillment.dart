@@ -1,7 +1,7 @@
-/// Canonical Admin Fulfillment models based on @medusajs/types v2.10.1
-///
-/// Provides comprehensive fulfillment management functionality with complete
-/// API compatibility and type safety.
+// Canonical Admin Fulfillment models based on @medusajs/types v2.10.1
+//
+// Provides comprehensive fulfillment management functionality with complete
+// API compatibility and type safety.
 
 import 'package:json_annotation/json_annotation.dart';
 

@@ -294,8 +294,9 @@ class AdminCurrencyResource extends AdminResource {
   }) async {
     final query = <String, dynamic>{};
     if (period != null) query['period'] = period;
-    if (currencyCodes != null)
+    if (currencyCodes != null) {
       query['currency_codes'] = currencyCodes.join(',');
+    }
 
     final response = await client.fetch<Map<String, dynamic>>(
       '$resourcePath/analytics',

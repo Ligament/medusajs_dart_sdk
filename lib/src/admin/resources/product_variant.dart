@@ -115,23 +115,25 @@ class AdminProductVariantResource extends AdminResource {
     String? locationId,
     ClientHeaders? headers,
   }) async {
-    final body = <String, dynamic>{
-      'quantity': quantity,
-    };
-    
+    final body = <String, dynamic>{'quantity': quantity};
+
     if (locationId != null) {
       body['location_id'] = locationId;
     }
 
-    return await client.fetch<Map<String, dynamic>>(
-      '$resourcePath/$id/inventory',
-      method: 'POST',
-      body: body,
-      headers: headers,
-    ).then((response) {
-      final data = response['product_variant'];
-      return data != null ? ProductVariant.fromJson(data as Map<String, dynamic>) : null;
-    });
+    return await client
+        .fetch<Map<String, dynamic>>(
+          '$resourcePath/$id/inventory',
+          method: 'POST',
+          body: body,
+          headers: headers,
+        )
+        .then((response) {
+          final data = response['product_variant'];
+          return data != null
+              ? ProductVariant.fromJson(data as Map<String, dynamic>)
+              : null;
+        });
   }
 
   /// Get variant inventory levels

@@ -88,10 +88,11 @@ class MedusaAuth {
   }
 
   /// Refresh the authentication token
-  Future<String> refresh() async {
+  Future<String> refresh({ClientHeaders? headers}) async {
     final response = await _client.fetch<Map<String, dynamic>>(
       '/auth/token/refresh',
       method: 'POST',
+      headers: headers,
     );
 
     final token = response['token'] as String?;

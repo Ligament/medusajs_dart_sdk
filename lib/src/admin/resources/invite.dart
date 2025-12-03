@@ -19,9 +19,10 @@ class AdminInviteResource extends AdminResource {
       headers: headers,
     );
 
-    final invites = (response['invites'] as List? ?? [])
-        .map((json) => json as Map<String, dynamic>)
-        .toList();
+    final invites =
+        (response['invites'] as List? ?? [])
+            .map((json) => json as Map<String, dynamic>)
+            .toList();
 
     return PaginatedResponse(
       data: invites,
@@ -85,10 +86,7 @@ class AdminInviteResource extends AdminResource {
     final response = await client.fetch<Map<String, dynamic>>(
       '$resourcePath/accept',
       method: 'POST',
-      body: {
-        'token': token,
-        ...body,
-      },
+      body: {'token': token, ...body},
       query: query,
       headers: headers,
     );
@@ -142,7 +140,11 @@ class AdminInviteResource extends AdminResource {
     Map<String, dynamic>? additionalFilters,
     ClientHeaders? headers,
   }) async {
-    return byStatus('pending', additionalFilters: additionalFilters, headers: headers);
+    return byStatus(
+      'pending',
+      additionalFilters: additionalFilters,
+      headers: headers,
+    );
   }
 
   /// Get accepted invites
@@ -150,7 +152,11 @@ class AdminInviteResource extends AdminResource {
     Map<String, dynamic>? additionalFilters,
     ClientHeaders? headers,
   }) async {
-    return byStatus('accepted', additionalFilters: additionalFilters, headers: headers);
+    return byStatus(
+      'accepted',
+      additionalFilters: additionalFilters,
+      headers: headers,
+    );
   }
 
   /// Get expired invites
@@ -158,6 +164,10 @@ class AdminInviteResource extends AdminResource {
     Map<String, dynamic>? additionalFilters,
     ClientHeaders? headers,
   }) async {
-    return byStatus('expired', additionalFilters: additionalFilters, headers: headers);
+    return byStatus(
+      'expired',
+      additionalFilters: additionalFilters,
+      headers: headers,
+    );
   }
 }

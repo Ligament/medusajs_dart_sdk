@@ -29,16 +29,16 @@ class FulfillmentSet {
       id: json['id'] as String,
       name: json['name'] as String,
       type: json['type'] as String,
-      locationIds: (json['location_ids'] as List?)
-              ?.map((e) => e as String)
-              .toList() ??
+      locationIds:
+          (json['location_ids'] as List?)?.map((e) => e as String).toList() ??
           [],
       metadata: json['metadata'] as Map<String, dynamic>?,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
-      deletedAt: json['deleted_at'] != null
-          ? DateTime.parse(json['deleted_at'] as String)
-          : null,
+      deletedAt:
+          json['deleted_at'] != null
+              ? DateTime.parse(json['deleted_at'] as String)
+              : null,
     );
   }
 

@@ -1,7 +1,7 @@
-/// Canonical Admin Fulfillment Set models based on @medusajs/types v2.10.1
-///
-/// Provides fulfillment set management functionality with complete
-/// API compatibility and type safety.
+// Canonical Admin Fulfillment Set models based on @medusajs/types v2.10.1
+//
+// Provides fulfillment set management functionality with complete
+// API compatibility and type safety.
 
 import 'package:json_annotation/json_annotation.dart';
 
@@ -203,6 +203,7 @@ class AdminUpsertFulfillmentSetServiceZoneCountry extends AdminUpsertGeoZone {
     Map<String, dynamic> json,
   ) => _$AdminUpsertFulfillmentSetServiceZoneCountryFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() =>
       _$AdminUpsertFulfillmentSetServiceZoneCountryToJson(this);
 }
@@ -223,6 +224,7 @@ class AdminUpsertFulfillmentSetServiceZoneProvince extends AdminUpsertGeoZone {
     Map<String, dynamic> json,
   ) => _$AdminUpsertFulfillmentSetServiceZoneProvinceFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() =>
       _$AdminUpsertFulfillmentSetServiceZoneProvinceToJson(this);
 }
@@ -247,6 +249,7 @@ class AdminUpsertFulfillmentSetServiceZoneCity extends AdminUpsertGeoZone {
     Map<String, dynamic> json,
   ) => _$AdminUpsertFulfillmentSetServiceZoneCityFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() =>
       _$AdminUpsertFulfillmentSetServiceZoneCityToJson(this);
 }
@@ -275,6 +278,7 @@ class AdminUpsertFulfillmentSetServiceZoneZip extends AdminUpsertGeoZone {
     Map<String, dynamic> json,
   ) => _$AdminUpsertFulfillmentSetServiceZoneZipFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() =>
       _$AdminUpsertFulfillmentSetServiceZoneZipToJson(this);
 }

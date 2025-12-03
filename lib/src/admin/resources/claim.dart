@@ -85,10 +85,7 @@ class AdminClaimResource extends AdminResource {
   }
 
   /// Cancel a claim
-  Future<ClaimOrder?> cancel(
-    String id, {
-    ClientHeaders? headers,
-  }) async {
+  Future<ClaimOrder?> cancel(String id, {ClientHeaders? headers}) async {
     return await updateGeneric<ClaimOrder>(
       id: id,
       body: {'canceled_at': DateTime.now().toIso8601String()},

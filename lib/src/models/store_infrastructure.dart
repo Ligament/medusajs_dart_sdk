@@ -1,15 +1,15 @@
-/// Store Infrastructure Models: Region, Collection, Category canonical implementations
-/// Following official @medusajs/types v2.10.1 specifications
-///
-/// This file contains canonical Store-specific infrastructure models that mirror the
-/// official TypeScript interfaces exactly, ensuring type safety and API compatibility.
-///
-/// Key models included:
-/// - Region & Country management
-/// - Collection organization
-/// - Product Category hierarchy
-/// - Payment provider configuration
-/// - Currency & tax handling
+// Store Infrastructure Models: Region, Collection, Category canonical implementations
+// Following official @medusajs/types v2.10.1 specifications
+//
+// This file contains canonical Store-specific infrastructure models that mirror the
+// official TypeScript interfaces exactly, ensuring type safety and API compatibility.
+//
+// Key models included:
+// - Region & Country management
+// - Collection organization
+// - Product Category hierarchy
+// - Payment provider configuration
+// - Currency & tax handling
 
 import 'package:json_annotation/json_annotation.dart';
 import 'store_product.dart';
@@ -156,7 +156,7 @@ class StoreRegionCountry {
 /// Represents a curated collection of products for organizing inventory,
 /// creating marketing campaigns, and improving product discovery.
 ///
-/// Official Type: StoreCollection extends Omit<BaseCollection, "products">
+/// Official Type: `StoreCollection extends Omit<BaseCollection, "products">`
 @JsonSerializable(explicitToJson: true)
 class StoreCollection {
   /// The collection's ID
@@ -211,7 +211,7 @@ class StoreCollection {
 /// Represents a product category with support for hierarchical organization,
 /// parent-child relationships, and product associations for navigation.
 ///
-/// Official Type: StoreProductCategory extends Omit<BaseProductCategory, "is_active" | "is_internal" | "products" | "parent_category" | "category_children">
+/// Official Type: `StoreProductCategory extends Omit<BaseProductCategory, "is_active" | "is_internal" | "products" | "parent_category" | "category_children">`
 @JsonSerializable(explicitToJson: true)
 class StoreProductCategory {
   /// The category's ID

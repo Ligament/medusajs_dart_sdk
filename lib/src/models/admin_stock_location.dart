@@ -1,7 +1,7 @@
-///  Admin Stock Location models from @medusajs/types v2.10.1
-///
-/// Comprehensive stock location management models following Medusa v2.10 specifications.
-/// Covers stock locations, addresses, fulfillment sets, and inventory levels.
+// Admin Stock Location models from @medusajs/types v2.10.1
+//
+// Comprehensive stock location management models following Medusa v2.10 specifications.
+// Covers stock locations, addresses, fulfillment sets, and inventory levels.
 
 import 'package:json_annotation/json_annotation.dart';
 import 'admin_inventory_item.dart' show AdminInventoryLevel;

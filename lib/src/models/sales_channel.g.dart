@@ -14,10 +14,9 @@ SalesChannel _$SalesChannelFromJson(Map<String, dynamic> json) => SalesChannel(
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$SalesChannelToJson(SalesChannel instance) =>

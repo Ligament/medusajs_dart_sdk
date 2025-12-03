@@ -46,10 +46,9 @@ BatchResponse<T> _$BatchResponseFromJson<T>(
 ) => BatchResponse<T>(
   created: (json['created'] as List<dynamic>).map(fromJsonT).toList(),
   updated: (json['updated'] as List<dynamic>).map(fromJsonT).toList(),
-  deleted:
-      (json['deleted'] as List<dynamic>)
-          .map((e) => DeleteResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  deleted: (json['deleted'] as List<dynamic>)
+      .map((e) => DeleteResponse.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$BatchResponseToJson<T>(

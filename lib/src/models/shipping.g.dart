@@ -17,28 +17,23 @@ ShippingOption _$ShippingOptionFromJson(Map<String, dynamic> json) =>
       amount: (json['amount'] as num?)?.toInt(),
       isReturn: json['is_return'] as bool,
       adminOnly: json['admin_only'] as bool?,
-      requirements:
-          (json['requirements'] as List<dynamic>?)
-              ?.map(
-                (e) => ShippingOptionRequirement.fromJson(
-                  e as Map<String, dynamic>,
-                ),
-              )
-              .toList(),
+      requirements: (json['requirements'] as List<dynamic>?)
+          ?.map(
+            (e) =>
+                ShippingOptionRequirement.fromJson(e as Map<String, dynamic>),
+          )
+          .toList(),
       data: json['data'] as Map<String, dynamic>?,
       metadata: json['metadata'] as Map<String, dynamic>?,
-      createdAt:
-          json['created_at'] == null
-              ? null
-              : DateTime.parse(json['created_at'] as String),
-      updatedAt:
-          json['updated_at'] == null
-              ? null
-              : DateTime.parse(json['updated_at'] as String),
-      deletedAt:
-          json['deleted_at'] == null
-              ? null
-              : DateTime.parse(json['deleted_at'] as String),
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+      deletedAt: json['deleted_at'] == null
+          ? null
+          : DateTime.parse(json['deleted_at'] as String),
     );
 
 Map<String, dynamic> _$ShippingOptionToJson(ShippingOption instance) =>
@@ -72,10 +67,9 @@ ShippingOptionRequirement _$ShippingOptionRequirementFromJson(
   shippingOptionId: json['shipping_option_id'] as String,
   type: $enumDecode(_$RequirementTypeEnumMap, json['type']),
   amount: (json['amount'] as num).toInt(),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$ShippingOptionRequirementToJson(
@@ -104,14 +98,12 @@ ShippingMethod _$ShippingMethodFromJson(Map<String, dynamic> json) =>
       claimId: json['claim_id'] as String?,
       price: (json['price'] as num).toInt(),
       data: json['data'] as Map<String, dynamic>?,
-      createdAt:
-          json['created_at'] == null
-              ? null
-              : DateTime.parse(json['created_at'] as String),
-      updatedAt:
-          json['updated_at'] == null
-              ? null
-              : DateTime.parse(json['updated_at'] as String),
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
     );
 
 Map<String, dynamic> _$ShippingMethodToJson(ShippingMethod instance) =>

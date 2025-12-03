@@ -11,19 +11,15 @@ ProductOption _$ProductOptionFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       title: json['title'] as String,
       productId: json['product_id'] as String,
-      values:
-          (json['values'] as List<dynamic>?)
-              ?.map(
-                (e) => ProductOptionValue.fromJson(e as Map<String, dynamic>),
-              )
-              .toList(),
+      values: (json['values'] as List<dynamic>?)
+          ?.map((e) => ProductOptionValue.fromJson(e as Map<String, dynamic>))
+          .toList(),
       metadata: json['metadata'] as Map<String, dynamic>?,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
-      deletedAt:
-          json['deleted_at'] == null
-              ? null
-              : DateTime.parse(json['deleted_at'] as String),
+      deletedAt: json['deleted_at'] == null
+          ? null
+          : DateTime.parse(json['deleted_at'] as String),
     );
 
 Map<String, dynamic> _$ProductOptionToJson(ProductOption instance) =>
@@ -46,10 +42,9 @@ ProductOptionValue _$ProductOptionValueFromJson(Map<String, dynamic> json) =>
       metadata: json['metadata'] as Map<String, dynamic>?,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
-      deletedAt:
-          json['deleted_at'] == null
-              ? null
-              : DateTime.parse(json['deleted_at'] as String),
+      deletedAt: json['deleted_at'] == null
+          ? null
+          : DateTime.parse(json['deleted_at'] as String),
     );
 
 Map<String, dynamic> _$ProductOptionValueToJson(ProductOptionValue instance) =>

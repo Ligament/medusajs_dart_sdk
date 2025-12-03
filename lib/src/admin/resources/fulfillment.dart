@@ -30,7 +30,7 @@ class AdminFulfillmentResource extends AdminResource {
     AdminFulfillmentFilters? filters,
     ClientHeaders? headers,
   }) async {
-    final query = filters?.toQueryParameters() ?? <String, dynamic>{};
+    final query = filters?.toJson() ?? <String, dynamic>{};
 
     return await listGeneric<AdminFulfillment>(
       endpoint: resourcePath,
@@ -213,11 +213,19 @@ class AdminFulfillmentResource extends AdminResource {
     AdminFulfillmentFilters? additionalFilters,
     ClientHeaders? headers,
   }) async {
-    final filters =
-        additionalFilters?.byOrder(orderId) ??
-        AdminFulfillmentFilters(orderId: [orderId]);
+    final filters = additionalFilters;
+    final updatedFilters = AdminFulfillmentFilters(
+      orderId: [orderId],
+      status: filters?.status,
+      locationId: filters?.locationId,
+      providerId: filters?.providerId,
+      createdAtGte: filters?.createdAtGte,
+      createdAtLte: filters?.createdAtLte,
+      updatedAtGte: filters?.updatedAtGte,
+      updatedAtLte: filters?.updatedAtLte,
+    );
 
-    return list(filters: filters, headers: headers);
+    return list(filters: updatedFilters, headers: headers);
   }
 
   /// List fulfillments by location ID
@@ -236,28 +244,16 @@ class AdminFulfillmentResource extends AdminResource {
     AdminFulfillmentFilters? additionalFilters,
     ClientHeaders? headers,
   }) async {
-    final filters = additionalFilters ?? AdminFulfillmentFilters();
+    final filters = additionalFilters;
     final updatedFilters = AdminFulfillmentFilters(
-      id: filters.id,
-      locationId: [locationId],
-      providerId: filters.providerId,
-      orderId: filters.orderId,
-      shippingOptionId: filters.shippingOptionId,
-      status: filters.status,
-      trackingNumbers: filters.trackingNumbers,
-      createdAt: filters.createdAt,
-      updatedAt: filters.updatedAt,
-      shippedAt: filters.shippedAt,
-      deliveredAt: filters.deliveredAt,
-      canceledAt: filters.canceledAt,
-      deletedAt: filters.deletedAt,
-      requiresShipping: filters.requiresShipping,
-      q: filters.q,
-      offset: filters.offset,
-      limit: filters.limit,
-      order: filters.order,
-      expand: filters.expand,
-      fields: filters.fields,
+      orderId: filters?.orderId,
+      status: filters?.status,
+      locationId: locationId,
+      providerId: filters?.providerId,
+      createdAtGte: filters?.createdAtGte,
+      createdAtLte: filters?.createdAtLte,
+      updatedAtGte: filters?.updatedAtGte,
+      updatedAtLte: filters?.updatedAtLte,
     );
 
     return list(filters: updatedFilters, headers: headers);
@@ -280,28 +276,16 @@ class AdminFulfillmentResource extends AdminResource {
     AdminFulfillmentFilters? additionalFilters,
     ClientHeaders? headers,
   }) async {
-    final filters = additionalFilters ?? AdminFulfillmentFilters();
+    final filters = additionalFilters;
     final updatedFilters = AdminFulfillmentFilters(
-      id: filters.id,
-      locationId: filters.locationId,
-      providerId: [providerId],
-      orderId: filters.orderId,
-      shippingOptionId: filters.shippingOptionId,
-      status: filters.status,
-      trackingNumbers: filters.trackingNumbers,
-      createdAt: filters.createdAt,
-      updatedAt: filters.updatedAt,
-      shippedAt: filters.shippedAt,
-      deliveredAt: filters.deliveredAt,
-      canceledAt: filters.canceledAt,
-      deletedAt: filters.deletedAt,
-      requiresShipping: filters.requiresShipping,
-      q: filters.q,
-      offset: filters.offset,
-      limit: filters.limit,
-      order: filters.order,
-      expand: filters.expand,
-      fields: filters.fields,
+      orderId: filters?.orderId,
+      status: filters?.status,
+      locationId: filters?.locationId,
+      providerId: providerId,
+      createdAtGte: filters?.createdAtGte,
+      createdAtLte: filters?.createdAtLte,
+      updatedAtGte: filters?.updatedAtGte,
+      updatedAtLte: filters?.updatedAtLte,
     );
 
     return list(filters: updatedFilters, headers: headers);
@@ -324,51 +308,16 @@ class AdminFulfillmentResource extends AdminResource {
     AdminFulfillmentFilters? additionalFilters,
     ClientHeaders? headers,
   }) async {
-    final filters =
-        additionalFilters?.byStatus(status) ??
-        AdminFulfillmentFilters(status: [status]);
-
-    return list(filters: filters, headers: headers);
-  }
-
-  /// Search fulfillments by tracking numbers
-  ///
-  /// Example:
-  /// ```dart
-  /// final fulfillments = await admin.fulfillments.searchByTracking(
-  ///   ['TRACK123', 'TRACK456'],
-  ///   additionalFilters: AdminFulfillmentFilters(
-  ///     expand: ['order', 'items'],
-  ///   ),
-  /// );
-  /// ```
-  Future<PaginatedResponse<AdminFulfillment>> searchByTracking(
-    List<String> trackingNumbers, {
-    AdminFulfillmentFilters? additionalFilters,
-    ClientHeaders? headers,
-  }) async {
-    final filters = additionalFilters ?? AdminFulfillmentFilters();
+    final filters = additionalFilters;
     final updatedFilters = AdminFulfillmentFilters(
-      id: filters.id,
-      locationId: filters.locationId,
-      providerId: filters.providerId,
-      orderId: filters.orderId,
-      shippingOptionId: filters.shippingOptionId,
-      status: filters.status,
-      trackingNumbers: trackingNumbers,
-      createdAt: filters.createdAt,
-      updatedAt: filters.updatedAt,
-      shippedAt: filters.shippedAt,
-      deliveredAt: filters.deliveredAt,
-      canceledAt: filters.canceledAt,
-      deletedAt: filters.deletedAt,
-      requiresShipping: filters.requiresShipping,
-      q: filters.q,
-      offset: filters.offset,
-      limit: filters.limit,
-      order: filters.order,
-      expand: filters.expand,
-      fields: filters.fields,
+      orderId: filters?.orderId,
+      status: [status],
+      locationId: filters?.locationId,
+      providerId: filters?.providerId,
+      createdAtGte: filters?.createdAtGte,
+      createdAtLte: filters?.createdAtLte,
+      updatedAtGte: filters?.updatedAtGte,
+      updatedAtLte: filters?.updatedAtLte,
     );
 
     return list(filters: updatedFilters, headers: headers);
@@ -421,54 +370,5 @@ class AdminFulfillmentResource extends AdminResource {
       fromJson: AdminFulfillment.fromJson,
       headers: headers,
     );
-  }
-
-  // ===========================
-  // Business Logic Helpers
-  // ===========================
-
-  /// Check if fulfillment can be canceled
-  Future<bool> canCancel(String id, {ClientHeaders? headers}) async {
-    final fulfillment = await retrieve(id, headers: headers);
-    return fulfillment?.canCancel ?? false;
-  }
-
-  /// Check if fulfillment can be shipped
-  Future<bool> canShip(String id, {ClientHeaders? headers}) async {
-    final fulfillment = await retrieve(id, headers: headers);
-    return fulfillment?.canShip ?? false;
-  }
-
-  /// Get fulfillment status
-  Future<String?> getStatus(String id, {ClientHeaders? headers}) async {
-    final fulfillment = await retrieve(id, headers: headers);
-    return fulfillment?.status;
-  }
-
-  /// Check if fulfillment is complete (delivered)
-  Future<bool> isComplete(String id, {ClientHeaders? headers}) async {
-    final fulfillment = await retrieve(id, headers: headers);
-    return fulfillment?.isComplete ?? false;
-  }
-
-  /// Get primary tracking number for fulfillment
-  Future<String?> getPrimaryTrackingNumber(
-    String id, {
-    ClientHeaders? headers,
-  }) async {
-    final fulfillment = await retrieve(id, headers: headers);
-    return fulfillment?.primaryTrackingNumber;
-  }
-
-  /// Count total items in fulfillment
-  Future<int> getItemsCount(String id, {ClientHeaders? headers}) async {
-    final fulfillment = await retrieve(id, headers: headers);
-    return fulfillment?.itemsCount ?? 0;
-  }
-
-  /// Get total quantity fulfilled
-  Future<int> getTotalQuantity(String id, {ClientHeaders? headers}) async {
-    final fulfillment = await retrieve(id, headers: headers);
-    return fulfillment?.totalQuantity ?? 0;
   }
 }

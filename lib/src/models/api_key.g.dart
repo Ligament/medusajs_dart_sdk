@@ -11,17 +11,15 @@ ApiKey _$ApiKeyFromJson(Map<String, dynamic> json) => ApiKey(
   token: json['token'] as String,
   title: json['title'] as String,
   type: $enumDecode(_$ApiKeyTypeEnumMap, json['type']),
-  lastUsedAt:
-      json['last_used_at'] == null
-          ? null
-          : DateTime.parse(json['last_used_at'] as String),
+  lastUsedAt: json['last_used_at'] == null
+      ? null
+      : DateTime.parse(json['last_used_at'] as String),
   revoked: json['revoked'] as bool? ?? false,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  revokedAt:
-      json['revoked_at'] == null
-          ? null
-          : DateTime.parse(json['revoked_at'] as String),
+  revokedAt: json['revoked_at'] == null
+      ? null
+      : DateTime.parse(json['revoked_at'] as String),
   createdBy: json['created_by'] as String?,
   revokedBy: json['revoked_by'] as String?,
 );

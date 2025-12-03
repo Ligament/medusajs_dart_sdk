@@ -81,7 +81,10 @@ class AdminPaymentCollectionResource extends AdminResource {
       headers: headers,
     );
 
-    final collectionData = response['payment_collection'] as Map<String, dynamic>?;
-    return collectionData != null ? PaymentCollection.fromJson(collectionData) : null;
+    final collectionData =
+        response['payment_collection'] as Map<String, dynamic>?;
+    return collectionData != null
+        ? PaymentCollection.fromJson(collectionData)
+        : null;
   }
 }

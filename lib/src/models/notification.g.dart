@@ -23,12 +23,9 @@ Notification _$NotificationFromJson(Map<String, dynamic> json) => Notification(
   channel: json['channel'] as String?,
   template: json['template'] as String?,
   providerId: json['provider_id'] as String?,
-  provider:
-      json['provider'] == null
-          ? null
-          : NotificationProvider.fromJson(
-            json['provider'] as Map<String, dynamic>,
-          ),
+  provider: json['provider'] == null
+      ? null
+      : NotificationProvider.fromJson(json['provider'] as Map<String, dynamic>),
   data: json['data'] as Map<String, dynamic>?,
   parentId: json['parent_id'] as String?,
   parentNotificationId: json['parent_notification_id'] as String?,
@@ -37,12 +34,12 @@ Notification _$NotificationFromJson(Map<String, dynamic> json) => Notification(
   resourceId: json['resource_id'] as String?,
   customerId: json['customer_id'] as String?,
   eventName: json['event_name'] as String?,
-  attempts:
-      (json['attempts'] as List<dynamic>?)?.map((e) => e as String).toList(),
-  nextRetry:
-      json['next_retry'] == null
-          ? null
-          : DateTime.parse(json['next_retry'] as String),
+  attempts: (json['attempts'] as List<dynamic>?)
+      ?.map((e) => e as String)
+      .toList(),
+  nextRetry: json['next_retry'] == null
+      ? null
+      : DateTime.parse(json['next_retry'] as String),
   externalId: json['external_id'] as String?,
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
@@ -135,10 +132,9 @@ Map<String, dynamic> _$NotificationResponseToJson(
 NotificationsResponse _$NotificationsResponseFromJson(
   Map<String, dynamic> json,
 ) => NotificationsResponse(
-  notifications:
-      (json['notifications'] as List<dynamic>)
-          .map((e) => Notification.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  notifications: (json['notifications'] as List<dynamic>)
+      .map((e) => Notification.fromJson(e as Map<String, dynamic>))
+      .toList(),
   count: (json['count'] as num).toInt(),
   offset: (json['offset'] as num).toInt(),
   limit: (json['limit'] as num).toInt(),
@@ -156,10 +152,9 @@ Map<String, dynamic> _$NotificationsResponseToJson(
 NotificationProvidersResponse _$NotificationProvidersResponseFromJson(
   Map<String, dynamic> json,
 ) => NotificationProvidersResponse(
-  notificationProviders:
-      (json['notification_providers'] as List<dynamic>)
-          .map((e) => NotificationProvider.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  notificationProviders: (json['notification_providers'] as List<dynamic>)
+      .map((e) => NotificationProvider.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$NotificationProvidersResponseToJson(

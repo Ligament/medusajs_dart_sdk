@@ -45,22 +45,18 @@ LineItem _$LineItemFromJson(Map<String, dynamic> json) => LineItem(
   variantTitle: json['variant_title'] as String?,
   variantOptionValues: json['variant_option_values'] as List<dynamic>?,
   metadata: json['metadata'] as Map<String, dynamic>?,
-  createdAt:
-      json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
-  updatedAt:
-      json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
-  adjustments:
-      (json['adjustments'] as List<dynamic>?)
-          ?.map((e) => Adjustment.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  taxLines:
-      (json['tax_lines'] as List<dynamic>?)
-          ?.map((e) => TaxLine.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  createdAt: json['created_at'] == null
+      ? null
+      : DateTime.parse(json['created_at'] as String),
+  updatedAt: json['updated_at'] == null
+      ? null
+      : DateTime.parse(json['updated_at'] as String),
+  adjustments: (json['adjustments'] as List<dynamic>?)
+      ?.map((e) => Adjustment.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  taxLines: (json['tax_lines'] as List<dynamic>?)
+      ?.map((e) => TaxLine.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$LineItemToJson(LineItem instance) => <String, dynamic>{

@@ -83,12 +83,13 @@ class AdminResourceDiscovery {
       },
       'disabled_analysis': {
         'count': disabled.length,
-        'reasons': {
-          'authentication_conflicts': ['user'],
-          'provider_conflicts': ['fulfillment', 'payment'],
-          'dependency_issues': ['paymentCollection'],
-        },
-        'impact_level': disabled.length <= 4 ? 'LOW' : 'MEDIUM',
+        'resources': disabled,
+        'impact_level':
+            disabled.isEmpty
+                ? 'NONE'
+                : disabled.length <= 4
+                ? 'LOW'
+                : 'MEDIUM',
       },
       'performance_metrics': {
         'resource_loading': 'optimized_lazy_loading',
@@ -121,21 +122,8 @@ class AdminResourceDiscovery {
     }
 
     // Specific disabled resource recommendations
-    if (disabled.contains('user')) {
-      recommendations.add(
-        '💡 Consider implementing alternative user management strategy',
-      );
-    }
-    if (disabled.contains('payment') ||
-        disabled.contains('paymentCollection')) {
-      recommendations.add(
-        '💡 Payment resources disabled - ensure payment handling is covered elsewhere',
-      );
-    }
-    if (disabled.contains('fulfillment')) {
-      recommendations.add(
-        '💡 Use fulfillmentProvider for shipping operations instead of direct fulfillment',
-      );
+    if (disabled.isEmpty) {
+      recommendations.add('✅ All admin resources enabled');
     }
 
     // Performance recommendations

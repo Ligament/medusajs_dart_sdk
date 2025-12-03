@@ -56,14 +56,12 @@ Payment _$PaymentFromJson(Map<String, dynamic> json) => Payment(
   orderEditId: json['order_edit_id'] as String?,
   customerId: json['customer_id'] as String?,
   data: json['data'] as Map<String, dynamic>?,
-  capturedAt:
-      json['captured_at'] == null
-          ? null
-          : DateTime.parse(json['captured_at'] as String),
-  canceledAt:
-      json['canceled_at'] == null
-          ? null
-          : DateTime.parse(json['canceled_at'] as String),
+  capturedAt: json['captured_at'] == null
+      ? null
+      : DateTime.parse(json['captured_at'] as String),
+  canceledAt: json['canceled_at'] == null
+      ? null
+      : DateTime.parse(json['canceled_at'] as String),
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
@@ -96,21 +94,18 @@ PaymentCollection _$PaymentCollectionFromJson(Map<String, dynamic> json) =>
       authorizedAmount: (json['authorized_amount'] as num).toInt(),
       regionId: json['region_id'] as String,
       currencyCode: json['currency_code'] as String,
-      paymentSessions:
-          (json['payment_sessions'] as List<dynamic>?)
-              ?.map((e) => PaymentSession.fromJson(e as Map<String, dynamic>))
-              .toList(),
-      payments:
-          (json['payments'] as List<dynamic>?)
-              ?.map((e) => Payment.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      paymentSessions: (json['payment_sessions'] as List<dynamic>?)
+          ?.map((e) => PaymentSession.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      payments: (json['payments'] as List<dynamic>?)
+          ?.map((e) => Payment.fromJson(e as Map<String, dynamic>))
+          .toList(),
       metadata: json['metadata'] as Map<String, dynamic>?,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
-      deletedAt:
-          json['deleted_at'] == null
-              ? null
-              : DateTime.parse(json['deleted_at'] as String),
+      deletedAt: json['deleted_at'] == null
+          ? null
+          : DateTime.parse(json['deleted_at'] as String),
     );
 
 Map<String, dynamic> _$PaymentCollectionToJson(PaymentCollection instance) =>
@@ -184,8 +179,9 @@ Map<String, dynamic> _$UpdatePaymentCollectionRequestToJson(
 SetPaymentSessionsRequest _$SetPaymentSessionsRequestFromJson(
   Map<String, dynamic> json,
 ) => SetPaymentSessionsRequest(
-  providerIds:
-      (json['provider_ids'] as List<dynamic>).map((e) => e as String).toList(),
+  providerIds: (json['provider_ids'] as List<dynamic>)
+      .map((e) => e as String)
+      .toList(),
 );
 
 Map<String, dynamic> _$SetPaymentSessionsRequestToJson(
@@ -221,10 +217,9 @@ Map<String, dynamic> _$PaymentCollectionResponseToJson(
 PaymentCollectionsResponse _$PaymentCollectionsResponseFromJson(
   Map<String, dynamic> json,
 ) => PaymentCollectionsResponse(
-  paymentCollections:
-      (json['payment_collections'] as List<dynamic>)
-          .map((e) => PaymentCollection.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  paymentCollections: (json['payment_collections'] as List<dynamic>)
+      .map((e) => PaymentCollection.fromJson(e as Map<String, dynamic>))
+      .toList(),
   count: (json['count'] as num).toInt(),
   offset: (json['offset'] as num).toInt(),
   limit: (json['limit'] as num).toInt(),

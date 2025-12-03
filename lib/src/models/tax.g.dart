@@ -19,10 +19,9 @@ TaxRegion _$TaxRegionFromJson(Map<String, dynamic> json) => TaxRegion(
   countryCode: json['country_code'] as String?,
   provinceCode: json['province_code'] as String?,
   parentId: json['parent_id'] as String?,
-  provider:
-      json['provider'] == null
-          ? null
-          : TaxProvider.fromJson(json['provider'] as Map<String, dynamic>),
+  provider: json['provider'] == null
+      ? null
+      : TaxProvider.fromJson(json['provider'] as Map<String, dynamic>),
   providerId: json['provider_id'] as String?,
   defaultTaxRate: (json['default_tax_rate'] as num?)?.toDouble(),
   taxCalculationType: $enumDecodeNullable(
@@ -32,10 +31,9 @@ TaxRegion _$TaxRegionFromJson(Map<String, dynamic> json) => TaxRegion(
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$TaxRegionToJson(TaxRegion instance) => <String, dynamic>{
@@ -65,20 +63,18 @@ TaxRate _$TaxRateFromJson(Map<String, dynamic> json) => TaxRate(
   code: json['code'] as String?,
   name: json['name'] as String,
   regionId: json['region_id'] as String?,
-  region:
-      json['region'] == null
-          ? null
-          : TaxRegion.fromJson(json['region'] as Map<String, dynamic>),
+  region: json['region'] == null
+      ? null
+      : TaxRegion.fromJson(json['region'] as Map<String, dynamic>),
   isDefault: json['is_default'] as bool,
   isCombinable: json['is_combinable'] as bool,
   type: $enumDecode(_$TaxRateTypeEnumMap, json['type']),
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$TaxRateToJson(TaxRate instance) => <String, dynamic>{
@@ -218,10 +214,9 @@ Map<String, dynamic> _$TaxRegionResponseToJson(TaxRegionResponse instance) =>
 
 TaxRegionsResponse _$TaxRegionsResponseFromJson(Map<String, dynamic> json) =>
     TaxRegionsResponse(
-      taxRegions:
-          (json['tax_regions'] as List<dynamic>)
-              .map((e) => TaxRegion.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      taxRegions: (json['tax_regions'] as List<dynamic>)
+          .map((e) => TaxRegion.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),
@@ -245,10 +240,9 @@ Map<String, dynamic> _$TaxRateResponseToJson(TaxRateResponse instance) =>
 
 TaxRatesResponse _$TaxRatesResponseFromJson(Map<String, dynamic> json) =>
     TaxRatesResponse(
-      taxRates:
-          (json['tax_rates'] as List<dynamic>)
-              .map((e) => TaxRate.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      taxRates: (json['tax_rates'] as List<dynamic>)
+          .map((e) => TaxRate.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),
@@ -265,10 +259,9 @@ Map<String, dynamic> _$TaxRatesResponseToJson(TaxRatesResponse instance) =>
 TaxProvidersResponse _$TaxProvidersResponseFromJson(
   Map<String, dynamic> json,
 ) => TaxProvidersResponse(
-  taxProviders:
-      (json['tax_providers'] as List<dynamic>)
-          .map((e) => TaxProvider.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  taxProviders: (json['tax_providers'] as List<dynamic>)
+      .map((e) => TaxProvider.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$TaxProvidersResponseToJson(

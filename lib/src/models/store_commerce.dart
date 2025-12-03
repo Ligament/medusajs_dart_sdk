@@ -1,13 +1,13 @@
-/// Store Commerce Models: Cart, Order, Payment canonical implementations
-/// Following official @medusajs/types v2.10.1 specifications
-///
-/// This file contains canonical Store-specific commerce models that mirror the
-/// official TypeScript interfaces exactly, ensuring type safety and API compatibility.
-///
-/// Key models included:
-/// - Cart & LineItem management
-/// - Order & fulfillment processing
-/// - Payment collection & sessions
+// Store Commerce Models: Cart, Order, Payment canonical implementations
+// Following official @medusajs/types v2.10.1 specifications
+//
+// This file contains canonical Store-specific commerce models that mirror the
+// official TypeScript interfaces exactly, ensuring type safety and API compatibility.
+//
+// Key models included:
+// - Cart & LineItem management
+// - Order & fulfillment processing
+// - Payment collection & sessions
 
 import 'package:json_annotation/json_annotation.dart';
 import 'store_customer.dart';
@@ -51,7 +51,7 @@ dynamic _postalCodeToJson(String? value) => value;
 /// - Store region association
 /// - Promotion application tracking
 ///
-/// Official Type: StoreCart extends Omit<BaseCart, "items">
+/// Official Type: `StoreCart extends Omit<BaseCart, "items">`
 @JsonSerializable(explicitToJson: true)
 class StoreCart {
   /// The ID of the cart
@@ -265,7 +265,7 @@ class StoreCart {
 /// Represents a product variant added to the cart with quantity and pricing.
 /// Includes detailed product/variant information for display and calculation.
 ///
-/// Official Type: StoreCartLineItem extends Omit<BaseCartLineItem, "product" | "variant" | "cart">
+/// Official Type: `StoreCartLineItem extends Omit<BaseCartLineItem, "product" | "variant" | "cart">`
 @JsonSerializable(explicitToJson: true)
 class StoreCartLineItem {
   /// The ID of the line item
@@ -523,7 +523,11 @@ class StoreCartAddress {
   final String? province;
 
   /// The postal code of the address (can be numeric or string in API)
-  @JsonKey(name: 'postal_code', fromJson: _postalCodeFromJson, toJson: _postalCodeToJson)
+  @JsonKey(
+    name: 'postal_code',
+    fromJson: _postalCodeFromJson,
+    toJson: _postalCodeToJson,
+  )
   final String? postalCode;
 
   /// Holds custom data in key-value pairs
@@ -708,32 +712,33 @@ class StoreCartPromotion {
 }
 
 // Helper function to convert value (can be int or String) to String
-String _valueFromJson(dynamic value) {
+String? _valueFromJson(dynamic value) {
+  if (value == null) return null;
   if (value is String) return value;
   if (value is num) return value.toString();
   return value.toString();
 }
 
-dynamic _valueToJson(String value) => value;
+dynamic _valueToJson(String? value) => value;
 
 /// StorePromotionApplicationMethod - How a promotion is applied
 @JsonSerializable()
 class StorePromotionApplicationMethod {
   /// The amount to be discounted (can be numeric or string in API)
   @JsonKey(fromJson: _valueFromJson, toJson: _valueToJson)
-  final String value;
+  final String? value;
 
   /// The application method's type
-  final String type; // ApplicationMethodTypeValues
+  final String? type; // ApplicationMethodTypeValues
 
   /// The currency code of the discount
   @JsonKey(name: 'currency_code')
-  final String currencyCode;
+  final String? currencyCode;
 
   const StorePromotionApplicationMethod({
-    required this.value,
-    required this.type,
-    required this.currencyCode,
+    this.value,
+    this.type,
+    this.currencyCode,
   });
 
   factory StorePromotionApplicationMethod.fromJson(Map<String, dynamic> json) =>
@@ -999,7 +1004,7 @@ class StoreOrder {
 
 /// StoreOrderLineItem - Individual item in a completed order
 ///
-/// Official Type: StoreOrderLineItem extends Omit<BaseOrderLineItem, "product" | "variant">
+/// Official Type: `StoreOrderLineItem extends Omit<BaseOrderLineItem, "product" | "variant">`
 @JsonSerializable(explicitToJson: true)
 class StoreOrderLineItem {
   /// The ID of the line item
@@ -1217,7 +1222,11 @@ class StoreOrderAddress {
   final String? province;
 
   /// The postal code (can be numeric or string in API)
-  @JsonKey(name: 'postal_code', fromJson: _postalCodeFromJson, toJson: _postalCodeToJson)
+  @JsonKey(
+    name: 'postal_code',
+    fromJson: _postalCodeFromJson,
+    toJson: _postalCodeToJson,
+  )
   final String? postalCode;
 
   /// Holds custom data in key-value pairs
@@ -2157,6 +2166,67 @@ class StoreCartListResponse {
   factory StoreCartListResponse.fromJson(Map<String, dynamic> json) =>
       _$StoreCartListResponseFromJson(json);
   Map<String, dynamic> toJson() => _$StoreCartListResponseToJson(this);
+}
+
+/// Response for deleting a line item that also returns the parent cart
+@JsonSerializable(explicitToJson: true)
+class StoreLineItemDeleteResponse {
+  final String id;
+  final String object;
+  final bool deleted;
+  final StoreCart? parent;
+
+  const StoreLineItemDeleteResponse({
+    required this.id,
+    required this.object,
+    required this.deleted,
+    this.parent,
+  });
+
+  factory StoreLineItemDeleteResponse.fromJson(Map<String, dynamic> json) =>
+      _$StoreLineItemDeleteResponseFromJson(json);
+  Map<String, dynamic> toJson() => _$StoreLineItemDeleteResponseToJson(this);
+}
+
+/// Error payload returned when completing a cart fails
+@JsonSerializable()
+class StoreCompleteCartError {
+  final String message;
+  final String name;
+  final String type;
+
+  const StoreCompleteCartError({
+    required this.message,
+    required this.name,
+    required this.type,
+  });
+
+  factory StoreCompleteCartError.fromJson(Map<String, dynamic> json) =>
+      _$StoreCompleteCartErrorFromJson(json);
+  Map<String, dynamic> toJson() => _$StoreCompleteCartErrorToJson(this);
+}
+
+/// Response returned when attempting to complete a cart
+@JsonSerializable(explicitToJson: true)
+class StoreCompleteCartResponse {
+  final String type;
+  final StoreCart? cart;
+  final StoreOrder? order;
+  final StoreCompleteCartError? error;
+
+  const StoreCompleteCartResponse({
+    required this.type,
+    this.cart,
+    this.order,
+    this.error,
+  });
+
+  bool get isOrder => type == 'order';
+  bool get isCartError => type == 'cart';
+
+  factory StoreCompleteCartResponse.fromJson(Map<String, dynamic> json) =>
+      _$StoreCompleteCartResponseFromJson(json);
+  Map<String, dynamic> toJson() => _$StoreCompleteCartResponseToJson(this);
 }
 
 /// Response wrapper for single order operations

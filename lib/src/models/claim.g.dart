@@ -18,10 +18,9 @@ ClaimItem _$ClaimItemFromJson(Map<String, dynamic> json) => ClaimItem(
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$ClaimItemToJson(ClaimItem instance) => <String, dynamic>{
@@ -48,10 +47,9 @@ AdditionalClaimItem _$AdditionalClaimItemFromJson(Map<String, dynamic> json) =>
       metadata: json['metadata'] as Map<String, dynamic>?,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
-      deletedAt:
-          json['deleted_at'] == null
-              ? null
-              : DateTime.parse(json['deleted_at'] as String),
+      deletedAt: json['deleted_at'] == null
+          ? null
+          : DateTime.parse(json['deleted_at'] as String),
     );
 
 Map<String, dynamic> _$AdditionalClaimItemToJson(
@@ -80,29 +78,25 @@ ClaimOrder _$ClaimOrderFromJson(Map<String, dynamic> json) => ClaimOrder(
   type: $enumDecode(_$ClaimTypeEnumMap, json['type']),
   orderId: json['order_id'] as String,
   shippingAddressId: json['shipping_address_id'] as String?,
-  claimItems:
-      (json['claim_items'] as List<dynamic>?)
-          ?.map((e) => ClaimItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  additionalItems:
-      (json['additional_items'] as List<dynamic>?)
-          ?.map((e) => AdditionalClaimItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  claimItems: (json['claim_items'] as List<dynamic>?)
+      ?.map((e) => ClaimItem.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  additionalItems: (json['additional_items'] as List<dynamic>?)
+      ?.map((e) => AdditionalClaimItem.fromJson(e as Map<String, dynamic>))
+      .toList(),
   returnOrderId: json['return_order_id'] as String?,
   refundAmount: (json['refund_amount'] as num?)?.toInt(),
-  canceledAt:
-      json['canceled_at'] == null
-          ? null
-          : DateTime.parse(json['canceled_at'] as String),
+  canceledAt: json['canceled_at'] == null
+      ? null
+      : DateTime.parse(json['canceled_at'] as String),
   note: json['note'] as String?,
   noNotification: json['no_notification'] as bool?,
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$ClaimOrderToJson(ClaimOrder instance) =>
@@ -154,21 +148,18 @@ CreateClaimRequest _$CreateClaimRequestFromJson(Map<String, dynamic> json) =>
     CreateClaimRequest(
       orderId: json['order_id'] as String,
       type: $enumDecode(_$ClaimTypeEnumMap, json['type']),
-      claimItems:
-          (json['claim_items'] as List<dynamic>)
-              .map(
-                (e) =>
-                    CreateClaimItemRequest.fromJson(e as Map<String, dynamic>),
-              )
-              .toList(),
-      additionalItems:
-          (json['additional_items'] as List<dynamic>?)
-              ?.map(
-                (e) => CreateAdditionalClaimItemRequest.fromJson(
-                  e as Map<String, dynamic>,
-                ),
-              )
-              .toList(),
+      claimItems: (json['claim_items'] as List<dynamic>)
+          .map(
+            (e) => CreateClaimItemRequest.fromJson(e as Map<String, dynamic>),
+          )
+          .toList(),
+      additionalItems: (json['additional_items'] as List<dynamic>?)
+          ?.map(
+            (e) => CreateAdditionalClaimItemRequest.fromJson(
+              e as Map<String, dynamic>,
+            ),
+          )
+          .toList(),
       shippingAddressId: json['shipping_address_id'] as String?,
       returnShipping: json['return_shipping'] as bool?,
       noNotification: json['no_notification'] as bool?,
@@ -257,10 +248,9 @@ Map<String, dynamic> _$ClaimResponseToJson(ClaimResponse instance) =>
 
 ClaimsResponse _$ClaimsResponseFromJson(Map<String, dynamic> json) =>
     ClaimsResponse(
-      claims:
-          (json['claims'] as List<dynamic>)
-              .map((e) => ClaimOrder.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      claims: (json['claims'] as List<dynamic>)
+          .map((e) => ClaimOrder.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),

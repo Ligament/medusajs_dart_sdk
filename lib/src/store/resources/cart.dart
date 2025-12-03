@@ -105,16 +105,18 @@ class StoreCartResource extends StoreResource {
   }
 
   /// Delete line item from cart
-  Future<Map<String, dynamic>> deleteLineItem(
+  Future<StoreLineItemDeleteResponse> deleteLineItem(
     String cartId,
     String lineItemId, {
     ClientHeaders? headers,
   }) async {
-    return await client.fetch<Map<String, dynamic>>(
+    final response = await client.fetch<Map<String, dynamic>>(
       '$resourcePath/$cartId/line-items/$lineItemId',
       method: 'DELETE',
       headers: headers,
     );
+
+    return StoreLineItemDeleteResponse.fromJson(response);
   }
 
   /// Add shipping method to cart
@@ -139,17 +141,19 @@ class StoreCartResource extends StoreResource {
   }
 
   /// Complete cart (place order)
-  Future<Map<String, dynamic>> complete(
+  Future<StoreCompleteCartResponse> complete(
     String cartId, {
     Map<String, dynamic>? query,
     ClientHeaders? headers,
   }) async {
-    return await client.fetch<Map<String, dynamic>>(
+    final response = await client.fetch<Map<String, dynamic>>(
       '$resourcePath/$cartId/complete',
       method: 'POST',
       query: query,
       headers: headers,
     );
+
+    return StoreCompleteCartResponse.fromJson(response);
   }
 
   /// Transfer cart to logged-in customer

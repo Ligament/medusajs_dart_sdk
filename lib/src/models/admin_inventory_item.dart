@@ -1,7 +1,7 @@
-///  Admin Inventory Item models from @medusajs/types v2.10.1
-///
-/// Comprehensive inventory management models following Medusa v2.10 specifications.
-/// Covers inventory items, location levels, and related management structures.
+// Admin Inventory Item models from @medusajs/types v2.10.1
+//
+// Comprehensive inventory management models following Medusa v2.10 specifications.
+// Covers inventory items, location levels, and related management structures.
 
 import 'package:json_annotation/json_annotation.dart';
 

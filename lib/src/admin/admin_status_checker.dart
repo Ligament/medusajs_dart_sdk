@@ -58,26 +58,19 @@ class AdminStatusChecker {
 
   /// Get resource availability matrix
   Map<String, ResourceStatus> getResourceMatrix() {
-    return {
-      // Core Commerce
-      'product': ResourceStatus.available,
-      'order': ResourceStatus.available,
-      'customer': ResourceStatus.available,
-      'inventory': ResourceStatus.available,
-      'region': ResourceStatus.available,
+    final medusa = Medusa(
+      MedusaConfig(
+        baseUrl: 'https://test.medusajs.com',
+        publishableKey: 'test_key',
+      ),
+    );
 
-      // Enhanced Features
-      'workflowExecution': ResourceStatus.available,
-      'exchange': ResourceStatus.available,
-      'fulfillmentProvider': ResourceStatus.available,
-      'shippingOptionType': ResourceStatus.available,
-
-      // Temporarily Disabled
-      'fulfillment': ResourceStatus.disabled,
-      'payment': ResourceStatus.disabled,
-      'paymentCollection': ResourceStatus.disabled,
-      'user': ResourceStatus.disabled,
-    };
+    return medusa.admin.getResourceStatus().map(
+      (key, value) => MapEntry(
+        key,
+        value ? ResourceStatus.available : ResourceStatus.disabled,
+      ),
+    );
   }
 
   /// Generate detailed progress report
@@ -139,7 +132,7 @@ class AdminModuleStatus {
     if (completionPercentage >= 95.0) return StatusLevel.excellent;
     if (completionPercentage >= 85.0) return StatusLevel.good;
     if (completionPercentage >= 70.0) return StatusLevel.fair;
-    return StatusLevel.needs_work;
+    return StatusLevel.needsWork;
   }
 
   /// Get human-readable status
@@ -151,7 +144,7 @@ class AdminModuleStatus {
         return 'Good - Most features available';
       case StatusLevel.fair:
         return 'Fair - Core features available';
-      case StatusLevel.needs_work:
+      case StatusLevel.needsWork:
         return 'Needs Work - Limited functionality';
     }
   }
@@ -183,7 +176,7 @@ class AdminModuleStatus {
 enum ResourceStatus { available, disabled, error }
 
 /// Overall status level indicators
-enum StatusLevel { excellent, good, fair, needs_work }
+enum StatusLevel { excellent, good, fair, needsWork }
 
 /// Quick status check function for debugging
 void printAdminStatus() {

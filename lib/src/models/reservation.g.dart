@@ -19,10 +19,9 @@ Reservation _$ReservationFromJson(Map<String, dynamic> json) => Reservation(
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$ReservationToJson(Reservation instance) =>
@@ -112,10 +111,9 @@ Map<String, dynamic> _$ReservationResponseToJson(
 ReservationsResponse _$ReservationsResponseFromJson(
   Map<String, dynamic> json,
 ) => ReservationsResponse(
-  reservations:
-      (json['reservations'] as List<dynamic>)
-          .map((e) => Reservation.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  reservations: (json['reservations'] as List<dynamic>)
+      .map((e) => Reservation.fromJson(e as Map<String, dynamic>))
+      .toList(),
   count: (json['count'] as num).toInt(),
   offset: (json['offset'] as num).toInt(),
   limit: (json['limit'] as num).toInt(),

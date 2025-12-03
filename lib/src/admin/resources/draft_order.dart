@@ -85,10 +85,7 @@ class AdminDraftOrderResource extends AdminResource {
   }
 
   /// Complete a draft order (convert to order)
-  Future<Order?> complete(
-    String id, {
-    ClientHeaders? headers,
-  }) async {
+  Future<Order?> complete(String id, {ClientHeaders? headers}) async {
     return await createGeneric<Order>(
       body: {},
       endpoint: '$resourcePath/$id/complete',

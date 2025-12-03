@@ -19,9 +19,10 @@ class AdminRefundReasonResource extends AdminResource {
       headers: headers,
     );
 
-    final items = (response['refund_reasons'] as List? ?? [])
-        .map((json) => json as Map<String, dynamic>)
-        .toList();
+    final items =
+        (response['refund_reasons'] as List? ?? [])
+            .map((json) => json as Map<String, dynamic>)
+            .toList();
 
     return PaginatedResponse(
       data: items,

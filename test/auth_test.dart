@@ -29,18 +29,24 @@ void main() {
       test('should handle login flow', () async {
         // Test that login method exists and can be called
         // Note: This would normally make an HTTP request
-        expect(() => auth.login('customer', 'emailpass', {
-          'email': 'test@example.com',
-          'password': 'password'
-        }), isA<Function>());
+        expect(
+          () => auth.login('customer', 'emailpass', {
+            'email': 'test@example.com',
+            'password': 'password',
+          }),
+          isA<Function>(),
+        );
       });
 
       test('should handle register flow', () async {
         // Test that register method exists and can be called
-        expect(() => auth.register('customer', 'emailpass', {
-          'email': 'test@example.com',
-          'password': 'password'
-        }), isA<Function>());
+        expect(
+          () => auth.register('customer', 'emailpass', {
+            'email': 'test@example.com',
+            'password': 'password',
+          }),
+          isA<Function>(),
+        );
       });
 
       test('should handle logout', () async {
@@ -52,16 +58,22 @@ void main() {
     group('Authentication Flow', () {
       test('should handle password reset', () async {
         // Test that resetPassword method exists
-        expect(() => auth.resetPassword('customer', 'emailpass', {
-          'email': 'test@example.com'
-        }), isA<Function>());
+        expect(
+          () => auth.resetPassword('customer', 'emailpass', {
+            'email': 'test@example.com',
+          }),
+          isA<Function>(),
+        );
       });
 
       test('should handle provider updates', () async {
         // Test that updateProvider method exists
-        expect(() => auth.updateProvider('customer', 'emailpass', {
-          'password': 'newpassword'
-        }, 'token'), isA<Function>());
+        expect(
+          () => auth.updateProvider('customer', 'emailpass', {
+            'password': 'newpassword',
+          }, 'token'),
+          isA<Function>(),
+        );
       });
 
       test('should handle refresh token', () async {
@@ -71,9 +83,10 @@ void main() {
 
       test('should handle OAuth callback', () async {
         // Test that callback method exists
-        expect(() => auth.callback('customer', 'google', {
-          'code': 'auth_code'
-        }), isA<Function>());
+        expect(
+          () => auth.callback('customer', 'google', {'code': 'auth_code'}),
+          isA<Function>(),
+        );
       });
     });
 
@@ -82,7 +95,7 @@ void main() {
         // Test that auth module integrates with client
         expect(client, isNotNull);
         expect(config, isNotNull);
-        
+
         // Test that token can be retrieved from client
         final token = await client.getToken();
         expect(token, isNull); // Should be null initially
@@ -90,12 +103,12 @@ void main() {
 
       test('should handle token operations via client', () async {
         const testToken = 'test_token_123';
-        
+
         // Set token via client
         await client.setToken(testToken);
         final retrievedToken = await client.getToken();
         expect(retrievedToken, equals(testToken));
-        
+
         // Clear token via client
         await client.clearToken();
         final clearedToken = await client.getToken();

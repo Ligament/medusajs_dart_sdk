@@ -1,40 +1,8 @@
 // =============================================================================
-// 🚀 ADMIN RESOURCES - PHASE 6B++ ULTIMATE OPTIMIZATION 🏆
+// MedusaJS Admin Resources – v2.11.3
 // =============================================================================
-//
-// MedusaJS Dart SDK v2.10.1 - Enterprise Admin Resources
-// Status: 42/46 active resources (91.3% completion) - EXCEPTIONAL ⭐⭐⭐
-// Phase: 6B++ Ultimate Optimization - PRODUCTION EXCELLENCE ACHIEVED
-// Grade: A+ (94.1% Production Readiness) - INDUSTRY LEADING 🏆
-//
-// 🚀 COMPREHENSIVE ADMIN RESOURCE EXPORTS:
-//
-// This file provides centralized access to all administrative functionality
-// organized by business domain and optimized for developer experience.
-// Each resource group represents a core area of e-commerce operations
-// with full Medusa.js v2.10+ compatibility and enhanced features.
-//
-// ✅ ACTIVE RESOURCE GROUPS (42/46 - 91.3%):
-// • Core Commerce (11/11) - Complete product & order lifecycle
-// • Inventory & Stock (4/4) - Full inventory management system
-// • Regional & Infrastructure (4/4) - Geographic & system configuration
-// • Fulfillment & Shipping (5/6) - Advanced shipping & logistics
-// • Pricing & Promotions (4/4) - Dynamic pricing & marketing campaigns
-// • Tax Management (3/3) - Comprehensive tax handling system
-// • Returns & Exchanges (5/5) - Complete return lifecycle management
-// • Enhanced v2.10+ Features (3/3) - Latest workflow automation
-// • Administrative Operations (3/4) - System administration tools
-//
-// ❌ TEMPORARILY DISABLED (4/46 - 8.7%):
-// • user.dart - User management (auth system conflicts resolved in v2.11)
-// • fulfillment.dart - Direct fulfillment (superseded by providers)
-// • payment.dart - Payment processing (migrated to provider model)
-// • payment_collection.dart - Payment collections (dependency refactor)
-//
-// 🎯 OPTIMIZATION STATUS: Phase 6B++ - Production Excellence Achieved
-// 📈 PERFORMANCE: Lazy loading, intelligent caching, optimized imports
-// 🛡️ RELIABILITY: Comprehensive error handling, type safety, null safety
-// 📚 DOCUMENTATION: Self-documenting, inline examples, best practices
+// Central export barrel for every Admin API surface that the JS SDK exposes.
+// Grouped by business domain for easier discoverability and parity tracking.
 // =============================================================================
 
 // =====================================================================
@@ -85,10 +53,10 @@ export 'currency.dart'; // 💱 Multi-currency support & conversion
 
 export 'fulfillment_provider.dart'; // 🚛 Third-party shipping provider integration
 export 'fulfillment_set.dart'; // 📦 Fulfillment grouping & configuration
+export 'fulfillment.dart'; // 📮 Direct fulfillment management
 export 'shipping_option.dart'; // 🚢 Shipping method definitions & pricing
 export 'shipping_option_type.dart'; // 🏷️ Shipping type classification (v2.10+)
 export 'shipping_profile.dart'; // 📋 Shipping profile & rule management
-// export 'fulfillment.dart';       // ❌ DISABLED: Legacy direct fulfillment
 
 // =====================================================================
 // 💰 PRICING & PROMOTIONS (4/4 active) ✅ COMPLETE
@@ -124,17 +92,11 @@ export 'exchange.dart'; // 🔄 Product exchange processing (v2.10+)
 export 'claim.dart'; // ⚖️ Order dispute & claim management
 
 // =====================================================================
-// 💳 PAYMENT OPERATIONS (0/2 active) ❌ TEMPORARILY DISABLED
+// 💳 PAYMENT OPERATIONS (2/2 active) ✅ COMPLETE
 // =====================================================================
-// Payment processing infrastructure - migrated to provider-based model
-// in v2.10+ for enhanced security and compliance. Use payment providers
-// and fulfillment providers for payment processing capabilities.
-//
-// MIGRATION PATH: Use external payment providers (Stripe, PayPal, etc.)
-// configured through fulfillment providers for secure payment handling.
 
-// export 'payment.dart';           // ❌ DISABLED: Migrated to provider model
-// export 'payment_collection.dart'; // ❌ DISABLED: Refactored in v2.11+
+export 'payment.dart'; // 💳 Payment processing lifecycle management
+export 'payment_collection.dart'; // 🧾 Payment collection orchestration
 
 // =====================================================================
 // ⚡ ENHANCED v2.10+ FEATURES (3/3 active) ✅ COMPLETE
@@ -154,5 +116,6 @@ export 'plugin.dart'; // 🔌 Plugin system integration & extensions
 
 export 'invite.dart'; // 📧 User invitation & onboarding system
 export 'notification.dart'; // 📱 Notification management & delivery
-export 'upload.dart';               // 📁 File upload & media management
-// export 'user.dart';              // ❌ DISABLED: Auth conflicts (resolved in v2.11)
+export 'upload.dart'; // 📁 File upload & media management
+export 'user.dart'; // 👤 Admin user management APIs
+export 'views.dart'; // 🧩 View configuration management (feature flagged)

@@ -45,30 +45,25 @@ OrderEdit _$OrderEditFromJson(Map<String, dynamic> json) => OrderEdit(
   internalNote: json['internal_note'] as String?,
   createdBy: json['created_by'] as String?,
   requestedBy: json['requested_by'] as String?,
-  requestedAt:
-      json['requested_at'] == null
-          ? null
-          : DateTime.parse(json['requested_at'] as String),
+  requestedAt: json['requested_at'] == null
+      ? null
+      : DateTime.parse(json['requested_at'] as String),
   confirmedBy: json['confirmed_by'] as String?,
-  confirmedAt:
-      json['confirmed_at'] == null
-          ? null
-          : DateTime.parse(json['confirmed_at'] as String),
+  confirmedAt: json['confirmed_at'] == null
+      ? null
+      : DateTime.parse(json['confirmed_at'] as String),
   declinedBy: json['declined_by'] as String?,
-  declinedAt:
-      json['declined_at'] == null
-          ? null
-          : DateTime.parse(json['declined_at'] as String),
+  declinedAt: json['declined_at'] == null
+      ? null
+      : DateTime.parse(json['declined_at'] as String),
   declinedReason: json['declined_reason'] as String?,
   canceledBy: json['canceled_by'] as String?,
-  canceledAt:
-      json['canceled_at'] == null
-          ? null
-          : DateTime.parse(json['canceled_at'] as String),
-  changes:
-      (json['changes'] as List<dynamic>?)
-          ?.map((e) => OrderEditChange.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  canceledAt: json['canceled_at'] == null
+      ? null
+      : DateTime.parse(json['canceled_at'] as String),
+  changes: (json['changes'] as List<dynamic>?)
+      ?.map((e) => OrderEditChange.fromJson(e as Map<String, dynamic>))
+      .toList(),
   subtotal: (json['subtotal'] as num?)?.toInt(),
   total: (json['total'] as num?)?.toInt(),
   differenceDue: (json['difference_due'] as num?)?.toInt(),
@@ -224,10 +219,9 @@ Map<String, dynamic> _$OrderEditResponseToJson(OrderEditResponse instance) =>
 
 OrderEditsResponse _$OrderEditsResponseFromJson(Map<String, dynamic> json) =>
     OrderEditsResponse(
-      orderEdits:
-          (json['order_edits'] as List<dynamic>)
-              .map((e) => OrderEdit.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      orderEdits: (json['order_edits'] as List<dynamic>)
+          .map((e) => OrderEdit.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),

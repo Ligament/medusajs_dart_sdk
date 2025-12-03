@@ -22,18 +22,16 @@ DraftOrder _$DraftOrderFromJson(Map<String, dynamic> json) => DraftOrder(
   subtotal: (json['subtotal'] as num?)?.toInt(),
   taxTotal: (json['tax_total'] as num?)?.toInt(),
   total: (json['total'] as num?)?.toInt(),
-  completedAt:
-      json['completed_at'] == null
-          ? null
-          : DateTime.parse(json['completed_at'] as String),
+  completedAt: json['completed_at'] == null
+      ? null
+      : DateTime.parse(json['completed_at'] as String),
   noNotificationOrder: json['no_notification_order'] as bool?,
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$DraftOrderToJson(DraftOrder instance) =>
@@ -73,33 +71,27 @@ CreateDraftOrderRequest _$CreateDraftOrderRequestFromJson(
   regionId: json['region_id'] as String?,
   customerId: json['customer_id'] as String?,
   salesChannelId: json['sales_channel_id'] as String?,
-  shippingAddress:
-      json['shipping_address'] == null
-          ? null
-          : AddressRequest.fromJson(
-            json['shipping_address'] as Map<String, dynamic>,
-          ),
-  billingAddress:
-      json['billing_address'] == null
-          ? null
-          : AddressRequest.fromJson(
-            json['billing_address'] as Map<String, dynamic>,
-          ),
-  items:
-      (json['items'] as List<dynamic>?)
-          ?.map(
-            (e) =>
-                CreateDraftOrderItemRequest.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-  discounts:
-      (json['discounts'] as List<dynamic>?)
-          ?.map(
-            (e) => CreateDraftOrderDiscountRequest.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+  shippingAddress: json['shipping_address'] == null
+      ? null
+      : AddressRequest.fromJson(
+          json['shipping_address'] as Map<String, dynamic>,
+        ),
+  billingAddress: json['billing_address'] == null
+      ? null
+      : AddressRequest.fromJson(
+          json['billing_address'] as Map<String, dynamic>,
+        ),
+  items: (json['items'] as List<dynamic>?)
+      ?.map(
+        (e) => CreateDraftOrderItemRequest.fromJson(e as Map<String, dynamic>),
+      )
+      .toList(),
+  discounts: (json['discounts'] as List<dynamic>?)
+      ?.map(
+        (e) =>
+            CreateDraftOrderDiscountRequest.fromJson(e as Map<String, dynamic>),
+      )
+      .toList(),
   noNotificationOrder: json['no_notification_order'] as bool?,
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
@@ -153,18 +145,16 @@ UpdateDraftOrderRequest _$UpdateDraftOrderRequestFromJson(
   regionId: json['region_id'] as String?,
   customerId: json['customer_id'] as String?,
   email: json['email'] as String?,
-  shippingAddress:
-      json['shipping_address'] == null
-          ? null
-          : AddressRequest.fromJson(
-            json['shipping_address'] as Map<String, dynamic>,
-          ),
-  billingAddress:
-      json['billing_address'] == null
-          ? null
-          : AddressRequest.fromJson(
-            json['billing_address'] as Map<String, dynamic>,
-          ),
+  shippingAddress: json['shipping_address'] == null
+      ? null
+      : AddressRequest.fromJson(
+          json['shipping_address'] as Map<String, dynamic>,
+        ),
+  billingAddress: json['billing_address'] == null
+      ? null
+      : AddressRequest.fromJson(
+          json['billing_address'] as Map<String, dynamic>,
+        ),
   noNotificationOrder: json['no_notification_order'] as bool?,
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
@@ -211,10 +201,9 @@ Map<String, dynamic> _$DraftOrderResponseToJson(DraftOrderResponse instance) =>
 
 DraftOrdersResponse _$DraftOrdersResponseFromJson(Map<String, dynamic> json) =>
     DraftOrdersResponse(
-      draftOrders:
-          (json['draft_orders'] as List<dynamic>)
-              .map((e) => DraftOrder.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      draftOrders: (json['draft_orders'] as List<dynamic>)
+          .map((e) => DraftOrder.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),

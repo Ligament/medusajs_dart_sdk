@@ -65,7 +65,7 @@ class PaginatedIterator<T> {
     }
 
     final response = await _fetcher(_currentOffset, _config.limit);
-    final items = response.data ?? [];
+    final items = response.data;
 
     _totalFetched += items.length;
     _currentOffset += _config.limit;
@@ -249,25 +249,25 @@ extension PaginatedResponseExtensions<T> on PaginatedResponse<T> {
   /// Get pagination metadata
   PaginationMeta get meta {
     return PaginationUtils.createMeta(
-      offset: offset ?? 0,
-      limit: limit ?? 20,
-      count: count ?? 0,
+      offset: offset,
+      limit: limit,
+      count: count,
     );
   }
 
   /// Check if there are more pages
   bool get hasMorePages {
-    return PaginationUtils.hasMorePages(offset ?? 0, limit ?? 20, count ?? 0);
+    return PaginationUtils.hasMorePages(offset, limit, count);
   }
 
   /// Get current page number
   int get pageNumber {
-    return PaginationUtils.getPageNumber(offset ?? 0, limit ?? 20);
+    return PaginationUtils.getPageNumber(offset, limit);
   }
 
   /// Get total pages
   int get totalPages {
-    return PaginationUtils.calculateTotalPages(count ?? 0, limit ?? 20);
+    return PaginationUtils.calculateTotalPages(count, limit);
   }
 }
 

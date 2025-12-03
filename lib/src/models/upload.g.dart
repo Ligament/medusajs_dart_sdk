@@ -24,19 +24,17 @@ Upload _$UploadFromJson(Map<String, dynamic> json) => Upload(
   size: (json['size'] as num).toInt(),
   type: $enumDecode(_$UploadTypeEnumMap, json['type']),
   status: $enumDecode(_$UploadStatusEnumMap, json['status']),
-  dimensions:
-      json['dimensions'] == null
-          ? null
-          : FileDimensions.fromJson(json['dimensions'] as Map<String, dynamic>),
+  dimensions: json['dimensions'] == null
+      ? null
+      : FileDimensions.fromJson(json['dimensions'] as Map<String, dynamic>),
   alt: json['alt'] as String?,
   description: json['description'] as String?,
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$UploadToJson(Upload instance) => <String, dynamic>{
@@ -141,10 +139,9 @@ Map<String, dynamic> _$UploadResponseToJson(UploadResponse instance) =>
 
 UploadsResponse _$UploadsResponseFromJson(Map<String, dynamic> json) =>
     UploadsResponse(
-      uploads:
-          (json['uploads'] as List<dynamic>)
-              .map((e) => Upload.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      uploads: (json['uploads'] as List<dynamic>)
+          .map((e) => Upload.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),

@@ -12,17 +12,15 @@ ProductVariantOptionValue _$ProductVariantOptionValueFromJson(
   id: json['id'] as String,
   value: json['value'] as String,
   optionId: json['option_id'] as String,
-  option:
-      json['option'] == null
-          ? null
-          : ProductOption.fromJson(json['option'] as Map<String, dynamic>),
+  option: json['option'] == null
+      ? null
+      : ProductOption.fromJson(json['option'] as Map<String, dynamic>),
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$ProductVariantOptionValueToJson(

@@ -1,7 +1,7 @@
-///  Admin Collection models from @medusajs/types v2.10.1
-///
-/// Comprehensive product collection management models following Medusa v2.10 specifications.
-/// Covers collections, product associations, and catalog organization for structured product management.
+// Admin Collection models from @medusajs/types v2.10.1
+//
+// Comprehensive product collection management models following Medusa v2.10 specifications.
+// Covers collections, product associations, and catalog organization for structured product management.
 
 import 'package:json_annotation/json_annotation.dart';
 

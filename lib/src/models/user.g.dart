@@ -16,10 +16,9 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -47,22 +46,19 @@ Invite _$InviteFromJson(Map<String, dynamic> json) => Invite(
   status: $enumDecode(_$InviteStatusEnumMap, json['status']),
   token: json['token'] as String,
   userId: json['user_id'] as String?,
-  user:
-      json['user'] == null
-          ? null
-          : User.fromJson(json['user'] as Map<String, dynamic>),
+  user: json['user'] == null
+      ? null
+      : User.fromJson(json['user'] as Map<String, dynamic>),
   expiresAt: DateTime.parse(json['expires_at'] as String),
-  acceptedAt:
-      json['accepted_at'] == null
-          ? null
-          : DateTime.parse(json['accepted_at'] as String),
+  acceptedAt: json['accepted_at'] == null
+      ? null
+      : DateTime.parse(json['accepted_at'] as String),
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$InviteToJson(Invite instance) => <String, dynamic>{
@@ -163,10 +159,9 @@ Map<String, dynamic> _$UserResponseToJson(UserResponse instance) =>
 
 UsersResponse _$UsersResponseFromJson(Map<String, dynamic> json) =>
     UsersResponse(
-      users:
-          (json['users'] as List<dynamic>)
-              .map((e) => User.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      users: (json['users'] as List<dynamic>)
+          .map((e) => User.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),
@@ -190,10 +185,9 @@ Map<String, dynamic> _$InviteResponseToJson(InviteResponse instance) =>
 
 InvitesResponse _$InvitesResponseFromJson(Map<String, dynamic> json) =>
     InvitesResponse(
-      invites:
-          (json['invites'] as List<dynamic>)
-              .map((e) => Invite.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      invites: (json['invites'] as List<dynamic>)
+          .map((e) => Invite.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),

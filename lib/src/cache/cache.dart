@@ -73,7 +73,6 @@ class MemoryCacheStorage implements CacheStorage {
 
   /// Get cache statistics
   Map<String, dynamic> getStats() {
-    final now = DateTime.now();
     var expired = 0;
     var valid = 0;
 

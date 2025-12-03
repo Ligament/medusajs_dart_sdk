@@ -15,10 +15,9 @@ ReturnReason _$ReturnReasonFromJson(Map<String, dynamic> json) => ReturnReason(
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$ReturnReasonToJson(ReturnReason instance) =>
@@ -42,17 +41,15 @@ ReturnItem _$ReturnItemFromJson(Map<String, dynamic> json) => ReturnItem(
   isDamaged: json['is_damaged'] as bool,
   note: json['note'] as String?,
   reasonId: json['reason_id'] as String?,
-  reason:
-      json['reason'] == null
-          ? null
-          : ReturnReason.fromJson(json['reason'] as Map<String, dynamic>),
+  reason: json['reason'] == null
+      ? null
+      : ReturnReason.fromJson(json['reason'] as Map<String, dynamic>),
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$ReturnItemToJson(ReturnItem instance) =>
@@ -102,30 +99,26 @@ Return _$ReturnFromJson(Map<String, dynamic> json) => Return(
   exchangeId: json['exchange_id'] as String?,
   claimId: json['claim_id'] as String?,
   locationId: json['location_id'] as String?,
-  items:
-      (json['items'] as List<dynamic>?)
-          ?.map((e) => ReturnItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  shippingMethod:
-      json['shipping_method'] == null
-          ? null
-          : ReturnShippingMethod.fromJson(
-            json['shipping_method'] as Map<String, dynamic>,
-          ),
+  items: (json['items'] as List<dynamic>?)
+      ?.map((e) => ReturnItem.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  shippingMethod: json['shipping_method'] == null
+      ? null
+      : ReturnShippingMethod.fromJson(
+          json['shipping_method'] as Map<String, dynamic>,
+        ),
   shippingData: json['shipping_data'] as Map<String, dynamic>?,
   refundAmount: (json['refund_amount'] as num?)?.toInt(),
-  receivedAt:
-      json['received_at'] == null
-          ? null
-          : DateTime.parse(json['received_at'] as String),
+  receivedAt: json['received_at'] == null
+      ? null
+      : DateTime.parse(json['received_at'] as String),
   note: json['note'] as String?,
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$ReturnToJson(Return instance) => <String, dynamic>{
@@ -157,13 +150,11 @@ const _$ReturnStatusEnumMap = {
 CreateReturnRequest _$CreateReturnRequestFromJson(Map<String, dynamic> json) =>
     CreateReturnRequest(
       orderId: json['order_id'] as String,
-      items:
-          (json['items'] as List<dynamic>)
-              .map(
-                (e) =>
-                    CreateReturnItemRequest.fromJson(e as Map<String, dynamic>),
-              )
-              .toList(),
+      items: (json['items'] as List<dynamic>)
+          .map(
+            (e) => CreateReturnItemRequest.fromJson(e as Map<String, dynamic>),
+          )
+          .toList(),
       locationId: json['location_id'] as String?,
       note: json['note'] as String?,
       receiveNow: json['receive_now'] as bool?,
@@ -206,10 +197,9 @@ Map<String, dynamic> _$CreateReturnItemRequestToJson(
 UpdateReturnRequest _$UpdateReturnRequestFromJson(Map<String, dynamic> json) =>
     UpdateReturnRequest(
       note: json['note'] as String?,
-      receivedAt:
-          json['received_at'] == null
-              ? null
-              : DateTime.parse(json['received_at'] as String),
+      receivedAt: json['received_at'] == null
+          ? null
+          : DateTime.parse(json['received_at'] as String),
       metadata: json['metadata'] as Map<String, dynamic>?,
     );
 
@@ -224,12 +214,9 @@ Map<String, dynamic> _$UpdateReturnRequestToJson(
 ReceiveReturnRequest _$ReceiveReturnRequestFromJson(
   Map<String, dynamic> json,
 ) => ReceiveReturnRequest(
-  items:
-      (json['items'] as List<dynamic>?)
-          ?.map(
-            (e) => ReceiveReturnItemRequest.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
+  items: (json['items'] as List<dynamic>?)
+      ?.map((e) => ReceiveReturnItemRequest.fromJson(e as Map<String, dynamic>))
+      .toList(),
   note: json['note'] as String?,
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
@@ -272,10 +259,9 @@ Map<String, dynamic> _$ReturnResponseToJson(ReturnResponse instance) =>
 
 ReturnsResponse _$ReturnsResponseFromJson(Map<String, dynamic> json) =>
     ReturnsResponse(
-      returns:
-          (json['returns'] as List<dynamic>)
-              .map((e) => Return.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      returns: (json['returns'] as List<dynamic>)
+          .map((e) => Return.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),
@@ -292,10 +278,9 @@ Map<String, dynamic> _$ReturnsResponseToJson(ReturnsResponse instance) =>
 ReturnReasonsResponse _$ReturnReasonsResponseFromJson(
   Map<String, dynamic> json,
 ) => ReturnReasonsResponse(
-  returnReasons:
-      (json['return_reasons'] as List<dynamic>)
-          .map((e) => ReturnReason.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  returnReasons: (json['return_reasons'] as List<dynamic>)
+      .map((e) => ReturnReason.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$ReturnReasonsResponseToJson(

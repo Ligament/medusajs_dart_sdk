@@ -65,38 +65,31 @@ Exchange _$ExchangeFromJson(Map<String, dynamic> json) => Exchange(
     json['fulfillment_status'],
   ),
   orderId: json['order_id'] as String,
-  exchangeItems:
-      (json['exchange_items'] as List<dynamic>?)
-          ?.map((e) => ExchangeItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  additionalItems:
-      (json['additional_items'] as List<dynamic>?)
-          ?.map(
-            (e) => AdditionalExchangeItem.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
+  exchangeItems: (json['exchange_items'] as List<dynamic>?)
+      ?.map((e) => ExchangeItem.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  additionalItems: (json['additional_items'] as List<dynamic>?)
+      ?.map((e) => AdditionalExchangeItem.fromJson(e as Map<String, dynamic>))
+      .toList(),
   returnId: json['return_id'] as String?,
   cartId: json['cart_id'] as String?,
   differenceDue: (json['difference_due'] as num?)?.toInt(),
   shippingAddressId: json['shipping_address_id'] as String?,
   allowBackorder: json['allow_backorder'] as bool?,
-  completedAt:
-      json['completed_at'] == null
-          ? null
-          : DateTime.parse(json['completed_at'] as String),
-  canceledAt:
-      json['canceled_at'] == null
-          ? null
-          : DateTime.parse(json['canceled_at'] as String),
+  completedAt: json['completed_at'] == null
+      ? null
+      : DateTime.parse(json['completed_at'] as String),
+  canceledAt: json['canceled_at'] == null
+      ? null
+      : DateTime.parse(json['canceled_at'] as String),
   note: json['note'] as String?,
   noNotification: json['no_notification'] as bool?,
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$ExchangeToJson(Exchange instance) => <String, dynamic>{
@@ -151,21 +144,16 @@ CreateExchangeRequest _$CreateExchangeRequestFromJson(
   Map<String, dynamic> json,
 ) => CreateExchangeRequest(
   orderId: json['order_id'] as String,
-  exchangeItems:
-      (json['exchange_items'] as List<dynamic>)
-          .map(
-            (e) =>
-                CreateExchangeItemRequest.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-  additionalItems:
-      (json['additional_items'] as List<dynamic>?)
-          ?.map(
-            (e) => CreateAdditionalExchangeItemRequest.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList(),
+  exchangeItems: (json['exchange_items'] as List<dynamic>)
+      .map((e) => CreateExchangeItemRequest.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  additionalItems: (json['additional_items'] as List<dynamic>?)
+      ?.map(
+        (e) => CreateAdditionalExchangeItemRequest.fromJson(
+          e as Map<String, dynamic>,
+        ),
+      )
+      .toList(),
   shippingAddressId: json['shipping_address_id'] as String?,
   allowBackorder: json['allow_backorder'] as bool?,
   noNotification: json['no_notification'] as bool?,
@@ -262,10 +250,9 @@ Map<String, dynamic> _$ExchangeResponseToJson(ExchangeResponse instance) =>
 
 ExchangesResponse _$ExchangesResponseFromJson(Map<String, dynamic> json) =>
     ExchangesResponse(
-      exchanges:
-          (json['exchanges'] as List<dynamic>)
-              .map((e) => Exchange.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      exchanges: (json['exchanges'] as List<dynamic>)
+          .map((e) => Exchange.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),

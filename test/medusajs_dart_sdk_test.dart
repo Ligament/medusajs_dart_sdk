@@ -6,10 +6,12 @@ void main() {
     late Medusa medusa;
 
     setUp(() {
-      medusa = Medusa(MedusaConfig(
-        baseUrl: 'https://test-medusa-backend.com',
-        publishableKey: 'pk_test_123',
-      ));
+      medusa = Medusa(
+        MedusaConfig(
+          baseUrl: 'https://test-medusa-backend.com',
+          publishableKey: 'pk_test_123',
+        ),
+      );
     });
 
     tearDown(() {
@@ -18,7 +20,10 @@ void main() {
 
     test('should create Medusa instance with config', () {
       expect(medusa, isNotNull);
-      expect(medusa.configuration.baseUrl, equals('https://test-medusa-backend.com'));
+      expect(
+        medusa.configuration.baseUrl,
+        equals('https://test-medusa-backend.com'),
+      );
       expect(medusa.configuration.publishableKey, equals('pk_test_123'));
     });
 

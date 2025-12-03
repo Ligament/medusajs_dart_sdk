@@ -1,7 +1,7 @@
-/// Admin Customer Group models for Medusa v2.10.1
-///
-/// Based on official @medusajs/types definitions for 100% API compatibility.
-/// These models provide comprehensive admin customer group management.
+// Admin Customer Group models for Medusa v2.10.1
+//
+// Based on official @medusajs/types definitions for 100% API compatibility.
+// These models provide comprehensive admin customer group management.
 
 import 'package:json_annotation/json_annotation.dart';
 
@@ -101,7 +101,7 @@ class AdminCreateCustomerGroupRequest {
 }
 
 /// Request to update a customer group
-@JsonSerializable(fieldRename: FieldRename.snake, includeIfNull: false)
+@JsonSerializable(fieldRename: FieldRename.snake)
 class AdminUpdateCustomerGroupRequest {
   /// Updated name of the customer group
   final String? name;

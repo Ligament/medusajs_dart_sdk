@@ -16,14 +16,12 @@ Payment _$PaymentFromJson(Map<String, dynamic> json) => Payment(
   amountRefunded: (json['amount_refunded'] as num).toInt(),
   providerId: json['provider_id'] as String,
   data: json['data'] as Map<String, dynamic>,
-  capturedAt:
-      json['captured_at'] == null
-          ? null
-          : DateTime.parse(json['captured_at'] as String),
-  canceledAt:
-      json['canceled_at'] == null
-          ? null
-          : DateTime.parse(json['canceled_at'] as String),
+  capturedAt: json['captured_at'] == null
+      ? null
+      : DateTime.parse(json['captured_at'] as String),
+  canceledAt: json['canceled_at'] == null
+      ? null
+      : DateTime.parse(json['canceled_at'] as String),
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
   metadata: json['metadata'] as Map<String, dynamic>?,

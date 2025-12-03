@@ -138,9 +138,7 @@ class AdminReservationResource extends AdminResource {
     int quantity, {
     ClientHeaders? headers,
   }) async {
-    final body = <String, dynamic>{
-      'quantity': quantity,
-    };
+    final body = <String, dynamic>{'quantity': quantity};
 
     return await updateGeneric<Reservation>(
       id: id,

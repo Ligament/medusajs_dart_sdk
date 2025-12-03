@@ -29,47 +29,39 @@ Cart _$CartFromJson(Map<String, dynamic> json) => Cart(
   shippingSubtotal: (json['shipping_subtotal'] as num?)?.toInt(),
   shippingTaxTotal: (json['shipping_tax_total'] as num?)?.toInt(),
   originalShippingTotal: (json['original_shipping_total'] as num?)?.toInt(),
-  originalShippingSubtotal:
-      (json['original_shipping_subtotal'] as num?)?.toInt(),
-  originalShippingTaxTotal:
-      (json['original_shipping_tax_total'] as num?)?.toInt(),
-  promotions:
-      (json['promotions'] as List<dynamic>?)
-          ?.map((e) => StoreCartPromotion.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  originalShippingSubtotal: (json['original_shipping_subtotal'] as num?)
+      ?.toInt(),
+  originalShippingTaxTotal: (json['original_shipping_tax_total'] as num?)
+      ?.toInt(),
+  promotions: (json['promotions'] as List<dynamic>?)
+      ?.map((e) => StoreCartPromotion.fromJson(e as Map<String, dynamic>))
+      .toList(),
   regionId: json['region_id'] as String?,
   customerId: json['customer_id'] as String?,
   salesChannelId: json['sales_channel_id'] as String?,
   email: json['email'] as String?,
   metadata: json['metadata'] as Map<String, dynamic>?,
-  createdAt:
-      json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
-  updatedAt:
-      json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
-  shippingAddress:
-      json['shipping_address'] == null
-          ? null
-          : Address.fromJson(json['shipping_address'] as Map<String, dynamic>),
-  billingAddress:
-      json['billing_address'] == null
-          ? null
-          : Address.fromJson(json['billing_address'] as Map<String, dynamic>),
-  items:
-      (json['items'] as List<dynamic>?)
-          ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  shippingMethods:
-      (json['shipping_methods'] as List<dynamic>?)
-          ?.map((e) => ShippingMethod.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  region:
-      json['region'] == null
-          ? null
-          : Region.fromJson(json['region'] as Map<String, dynamic>),
+  createdAt: json['created_at'] == null
+      ? null
+      : DateTime.parse(json['created_at'] as String),
+  updatedAt: json['updated_at'] == null
+      ? null
+      : DateTime.parse(json['updated_at'] as String),
+  shippingAddress: json['shipping_address'] == null
+      ? null
+      : Address.fromJson(json['shipping_address'] as Map<String, dynamic>),
+  billingAddress: json['billing_address'] == null
+      ? null
+      : Address.fromJson(json['billing_address'] as Map<String, dynamic>),
+  items: (json['items'] as List<dynamic>?)
+      ?.map((e) => LineItem.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  shippingMethods: (json['shipping_methods'] as List<dynamic>?)
+      ?.map((e) => ShippingMethod.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  region: json['region'] == null
+      ? null
+      : Region.fromJson(json['region'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$CartToJson(Cart instance) => <String, dynamic>{

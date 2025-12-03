@@ -98,8 +98,11 @@ class AdminReturnItem extends BaseReturnItem {
 }
 
 /// Base return interface
-@JsonSerializable(fieldRename: FieldRename.snake)
-class BaseReturn {
+@JsonSerializable(
+  fieldRename: FieldRename.snake,
+  genericArgumentFactories: true,
+)
+class BaseReturn<T extends BaseReturnItem> {
   /// The ID of the return
   final String id;
 
@@ -131,7 +134,7 @@ class BaseReturn {
   final num? refundAmount;
 
   /// The items of the return
-  final List<BaseReturnItem> items;
+  final List<T> items;
 
   /// When the return was received
   final DateTime? receivedAt;
@@ -175,20 +178,18 @@ class BaseReturn {
     this.requestedAt,
   });
 
-  factory BaseReturn.fromJson(Map<String, dynamic> json) =>
-      _$BaseReturnFromJson(json);
+  factory BaseReturn.fromJson(
+    Map<String, dynamic> json,
+    T Function(Object? json) fromJsonT,
+  ) => _$BaseReturnFromJson(json, fromJsonT);
 
-  Map<String, dynamic> toJson() => _$BaseReturnToJson(this);
+  Map<String, dynamic> toJson([Object Function(T value)? toJsonT]) =>
+      _$BaseReturnToJson(this, toJsonT ?? (T value) => value.toJson());
 }
 
 /// Admin return interface extending BaseReturn
 @JsonSerializable(fieldRename: FieldRename.snake)
-class AdminReturn extends BaseReturn {
-  /// The return's items (AdminReturnItem type)
-  @override
-  @JsonKey(name: 'items')
-  final List<AdminReturnItem> items;
-
+class AdminReturn extends BaseReturn<AdminReturnItem> {
   const AdminReturn({
     required super.id,
     required super.orderId,
@@ -200,7 +201,7 @@ class AdminReturn extends BaseReturn {
     super.displayId,
     super.noNotification,
     super.refundAmount,
-    required this.items,
+    required super.items,
     super.receivedAt,
     super.createdAt,
     super.canceledAt,
@@ -208,13 +209,15 @@ class AdminReturn extends BaseReturn {
     super.updatedAt,
     super.deletedAt,
     super.requestedAt,
-  }) : super(items: items);
+  });
 
   factory AdminReturn.fromJson(Map<String, dynamic> json) =>
       _$AdminReturnFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$AdminReturnToJson(this);
+  Map<String, dynamic> toJson([
+    Object Function(AdminReturnItem value)? toJsonT,
+  ]) => _$AdminReturnToJson(this);
 }
 
 // Query Parameters

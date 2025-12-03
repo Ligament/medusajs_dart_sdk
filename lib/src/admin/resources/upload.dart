@@ -122,18 +122,16 @@ class AdminUploadResource extends AdminResource {
       headers: headers,
     );
 
-    final uploads = (response['uploads'] as List? ?? [])
-        .map((json) => Upload.fromJson(json as Map<String, dynamic>))
-        .toList();
+    final uploads =
+        (response['uploads'] as List? ?? [])
+            .map((json) => Upload.fromJson(json as Map<String, dynamic>))
+            .toList();
 
     return uploads;
   }
 
   /// Get upload by URL
-  Future<Upload?> getByUrl(
-    String url, {
-    ClientHeaders? headers,
-  }) async {
+  Future<Upload?> getByUrl(String url, {ClientHeaders? headers}) async {
     final query = {'url': url};
     final uploads = await list(query: query, headers: headers);
     return uploads.data.isNotEmpty ? uploads.data.first : null;

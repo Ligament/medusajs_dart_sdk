@@ -109,10 +109,7 @@ class AdminReturnResource extends AdminResource {
   }
 
   /// Cancel a return
-  Future<Return?> cancel(
-    String id, {
-    ClientHeaders? headers,
-  }) async {
+  Future<Return?> cancel(String id, {ClientHeaders? headers}) async {
     final response = await client.fetch<Map<String, dynamic>>(
       '$resourcePath/$id/cancel',
       method: 'POST',
@@ -146,9 +143,7 @@ class AdminReturnResource extends AdminResource {
     List<Map<String, dynamic>> items, {
     ClientHeaders? headers,
   }) async {
-    final body = <String, dynamic>{
-      'items': items,
-    };
+    final body = <String, dynamic>{'items': items};
 
     final response = await client.fetch<Map<String, dynamic>>(
       '$resourcePath/$id/items',
@@ -167,9 +162,7 @@ class AdminReturnResource extends AdminResource {
     List<String> itemIds, {
     ClientHeaders? headers,
   }) async {
-    final body = <String, dynamic>{
-      'item_ids': itemIds,
-    };
+    final body = <String, dynamic>{'item_ids': itemIds};
 
     final response = await client.fetch<Map<String, dynamic>>(
       '$resourcePath/$id/items',

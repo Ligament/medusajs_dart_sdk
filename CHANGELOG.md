@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.10.1] - 2024-12-09
 
+## [Unreleased]
+
+### Changed
+- Refactored the repository layout to separate actively maintained code from historical artifacts.
+- Added a top-level `archive/` directory containing legacy docs (`PHASE_*`, deployment guides), deprecated examples/tests, unused phase engines, and vendored JS assets.
+- Trimmed `example/` down to the curated demos that match the current README while moving debug/phase demos into `example/archive/`.
+- Relocated one-off root `test_*.dart` programs into `archive/tests/` so `dart test` now only executes the supported suites.
+- Documented the new project structure in the README to make onboarding and maintenance easier.
+
 ### Fixed
 - **Performance**: Updated to Medusa.js v2.10.1 for improved cart operations performance
 - Reverted cart operation concurrency changes that caused performance regression
@@ -122,3 +131,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `build_runner`: ^2.4.12 - Code generation
 - `json_serializable`: ^6.8.0 - JSON serialization generator
 - `lints`: ^4.0.0 - Dart linting rules
+## [2.11.3] - 2025-01-05
+
+### Added
+- Admin Views API parity (columns, configuration CRUD, active view controls) with new typed models.
+- CamelCase admin resource getters plus dedicated commerce grouping, stats, and resource availability helpers.
+- View configuration models (`AdminViewConfiguration*`, `AdminViewsEntityColumnsResponse`) and store cart completion/delete response models.
+
+### Changed
+- Upgraded HTTP client to match `@medusajs/js-sdk@2.11.3` (debug flag, Basic API key auth, recursive query encoding, header overrides, session-aware JWT handling).
+- Store cart/order flows now return typed responses (`StoreCompleteCartResponse`, `StoreLineItemDeleteResponse`) and accept typed transfer payloads.
+- Admin resources fully enabled (fulfillment, payment, paymentCollection, user, views) with updated status reporting and tests.
+- Version bump to align with Medusa v2.11.3 / JS SDK 2.11.3.

@@ -204,7 +204,7 @@ class AdminCurrencyListResponse {
   final List<AdminCurrency> currencies;
 
   /// The estimated count from PostgreSQL query planner (may be inaccurate)
-  @JsonKey(name: 'estimate_count', includeIfNull: false)
+  @JsonKey(name: 'estimate_count')
   final num? estimateCount;
 
   const AdminCurrencyListResponse({

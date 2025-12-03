@@ -40,6 +40,7 @@ export 'admin_payment.dart'
         PaymentSessionStatus,
         PaymentCollectionStatus; // Avoid conflicts with other models
 export 'admin_workflow_execution.dart';
+export 'admin_view_configuration.dart';
 
 // Essential common types still needed by resources
 export 'common.dart';

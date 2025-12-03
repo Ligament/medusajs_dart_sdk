@@ -1,7 +1,7 @@
-///  Admin Price List models from @medusajs/types v2.10.1
-///
-/// Comprehensive price list management models following Medusa v2.10 specifications.
-/// Covers price lists, prices, rules, and promotional pricing strategies.
+// Admin Price List models from @medusajs/types v2.10.1
+//
+// Comprehensive price list management models following Medusa v2.10 specifications.
+// Covers price lists, prices, rules, and promotional pricing strategies.
 
 import 'package:json_annotation/json_annotation.dart';
 

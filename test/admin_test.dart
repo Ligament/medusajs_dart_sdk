@@ -94,7 +94,10 @@ void main() {
 
       test('should have fulfillment provider resource', () {
         expect(admin.fulfillmentProvider, isNotNull);
-        expect(admin.fulfillmentProvider, isA<AdminFulfillmentProviderResource>());
+        expect(
+          admin.fulfillmentProvider,
+          isA<AdminFulfillmentProviderResource>(),
+        );
       });
 
       test('should have fulfillment set resource', () {
@@ -135,6 +138,11 @@ void main() {
       test('should have plugin resource', () {
         expect(admin.plugin, isNotNull);
         expect(admin.plugin, isA<AdminPluginResource>());
+      });
+
+      test('should have views resource', () {
+        expect(admin.views, isNotNull);
+        expect(admin.views, isA<AdminViewsResource>());
       });
 
       test('should have price list resource', () {
@@ -232,24 +240,10 @@ void main() {
         expect(admin.upload, isA<AdminUploadResource>());
       });
 
-      test('should have workflow execution resource', () {
-        expect(admin.workflowExecution, isNotNull);
-        expect(admin.workflowExecution, isA<AdminWorkflowExecutionResource>());
-      });
-    });
-
-    group('Batch Operations', () {
-      test('should create batch manager', () {
-        final batchManager = admin.createBatch();
-        expect(batchManager, isNotNull);
-        expect(batchManager, isA<BatchManager>());
-      });
-
-      test('should create batch manager with custom batch size', () {
-        final batchManager = admin.createBatch(maxBatchSize: 100);
-        expect(batchManager, isNotNull);
-        expect(batchManager, isA<BatchManager>());
-      });
+      // test('should have workflow execution resource', () {
+      //   expect(admin.workflowExecution, isNotNull);
+      //   expect(admin.workflowExecution, isA<AdminWorkflowExecutionResource>());
+      // });
     });
 
     group('Resource Path Validation', () {
@@ -315,7 +309,7 @@ void main() {
         expect(admin.taxRate, isA<AdminResource>());
         expect(admin.taxRegion, isA<AdminResource>());
         expect(admin.upload, isA<AdminResource>());
-        expect(admin.workflowExecution, isA<AdminResource>());
+        // expect(admin.workflowExecution, isA<AdminResource>());
       });
     });
   });

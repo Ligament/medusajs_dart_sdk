@@ -19,9 +19,10 @@ class AdminPricePreferenceResource extends AdminResource {
       headers: headers,
     );
 
-    final preferences = (response['price_preferences'] as List? ?? [])
-        .map((json) => json as Map<String, dynamic>)
-        .toList();
+    final preferences =
+        (response['price_preferences'] as List? ?? [])
+            .map((json) => json as Map<String, dynamic>)
+            .toList();
 
     return PaginatedResponse(
       data: preferences,

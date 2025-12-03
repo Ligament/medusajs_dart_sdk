@@ -12,31 +12,25 @@ Region _$RegionFromJson(Map<String, dynamic> json) => Region(
   currencyCode: json['currency_code'] as String,
   taxRate: (json['tax_rate'] as num?)?.toDouble(),
   taxCode: json['tax_code'] as String?,
-  countries:
-      (json['countries'] as List<dynamic>?)
-          ?.map((e) => Country.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  paymentProviders:
-      (json['payment_providers'] as List<dynamic>?)
-          ?.map((e) => PaymentProvider.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  fulfillmentProviders:
-      (json['fulfillment_providers'] as List<dynamic>?)
-          ?.map((e) => FulfillmentProvider.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  countries: (json['countries'] as List<dynamic>?)
+      ?.map((e) => Country.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  paymentProviders: (json['payment_providers'] as List<dynamic>?)
+      ?.map((e) => PaymentProvider.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  fulfillmentProviders: (json['fulfillment_providers'] as List<dynamic>?)
+      ?.map((e) => FulfillmentProvider.fromJson(e as Map<String, dynamic>))
+      .toList(),
   includesTax: json['includes_tax'] as bool?,
-  createdAt:
-      json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
-  updatedAt:
-      json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  createdAt: json['created_at'] == null
+      ? null
+      : DateTime.parse(json['created_at'] as String),
+  updatedAt: json['updated_at'] == null
+      ? null
+      : DateTime.parse(json['updated_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 
@@ -64,18 +58,15 @@ Country _$CountryFromJson(Map<String, dynamic> json) => Country(
   displayName: json['display_name'] as String,
   regionId: json['region_id'] as String?,
   metadata: json['metadata'] as Map<String, dynamic>?,
-  createdAt:
-      json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
-  updatedAt:
-      json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  createdAt: json['created_at'] == null
+      ? null
+      : DateTime.parse(json['created_at'] as String),
+  updatedAt: json['updated_at'] == null
+      ? null
+      : DateTime.parse(json['updated_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$CountryToJson(Country instance) => <String, dynamic>{

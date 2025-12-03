@@ -12,16 +12,16 @@ PromotionRule _$PromotionRuleFromJson(Map<String, dynamic> json) =>
       description: json['description'] as String?,
       attribute: $enumDecode(_$RuleAttributeEnumMap, json['attribute']),
       operator: $enumDecode(_$RuleOperatorEnumMap, json['operator']),
-      values:
-          (json['values'] as List<dynamic>).map((e) => e as String).toList(),
+      values: (json['values'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       promotionId: json['promotion_id'] as String?,
       ruleType: $enumDecodeNullable(_$RuleTypeEnumMap, json['rule_type']),
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
-      deletedAt:
-          json['deleted_at'] == null
-              ? null
-              : DateTime.parse(json['deleted_at'] as String),
+      deletedAt: json['deleted_at'] == null
+          ? null
+          : DateTime.parse(json['deleted_at'] as String),
     );
 
 Map<String, dynamic> _$PromotionRuleToJson(PromotionRule instance) =>
@@ -76,10 +76,9 @@ CampaignBudget _$CampaignBudgetFromJson(Map<String, dynamic> json) =>
       campaignId: json['campaign_id'] as String?,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
-      deletedAt:
-          json['deleted_at'] == null
-              ? null
-              : DateTime.parse(json['deleted_at'] as String),
+      deletedAt: json['deleted_at'] == null
+          ? null
+          : DateTime.parse(json['deleted_at'] as String),
     );
 
 Map<String, dynamic> _$CampaignBudgetToJson(CampaignBudget instance) =>
@@ -99,49 +98,41 @@ Promotion _$PromotionFromJson(Map<String, dynamic> json) => Promotion(
   id: json['id'] as String,
   code: json['code'] as String,
   campaignId: json['campaign_id'] as String?,
-  campaign:
-      json['campaign'] == null
-          ? null
-          : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
+  campaign: json['campaign'] == null
+      ? null
+      : Campaign.fromJson(json['campaign'] as Map<String, dynamic>),
   isAutomatic: json['is_automatic'] as bool,
   isTaxInclusive: json['is_tax_inclusive'] as bool,
   type: $enumDecode(_$PromotionTypeEnumMap, json['type']),
   status: $enumDecode(_$PromotionStatusEnumMap, json['status']),
-  startsAt:
-      json['starts_at'] == null
-          ? null
-          : DateTime.parse(json['starts_at'] as String),
-  endsAt:
-      json['ends_at'] == null
-          ? null
-          : DateTime.parse(json['ends_at'] as String),
-  rules:
-      (json['rules'] as List<dynamic>?)
-          ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  targetRules:
-      (json['target_rules'] as List<dynamic>?)
-          ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  buyRules:
-      (json['buy_rules'] as List<dynamic>?)
-          ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  startsAt: json['starts_at'] == null
+      ? null
+      : DateTime.parse(json['starts_at'] as String),
+  endsAt: json['ends_at'] == null
+      ? null
+      : DateTime.parse(json['ends_at'] as String),
+  rules: (json['rules'] as List<dynamic>?)
+      ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  targetRules: (json['target_rules'] as List<dynamic>?)
+      ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  buyRules: (json['buy_rules'] as List<dynamic>?)
+      ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
+      .toList(),
   applicationMethod: $enumDecode(
     _$ApplicationMethodEnumMap,
     json['application_method'],
   ),
-  budget:
-      json['budget'] == null
-          ? null
-          : CampaignBudget.fromJson(json['budget'] as Map<String, dynamic>),
+  budget: json['budget'] == null
+      ? null
+      : CampaignBudget.fromJson(json['budget'] as Map<String, dynamic>),
   metadata: json['metadata'] as Map<String, dynamic>?,
   createdAt: DateTime.parse(json['created_at'] as String),
   updatedAt: DateTime.parse(json['updated_at'] as String),
-  deletedAt:
-      json['deleted_at'] == null
-          ? null
-          : DateTime.parse(json['deleted_at'] as String),
+  deletedAt: json['deleted_at'] == null
+      ? null
+      : DateTime.parse(json['deleted_at'] as String),
 );
 
 Map<String, dynamic> _$PromotionToJson(Promotion instance) => <String, dynamic>{
@@ -191,30 +182,25 @@ CreatePromotionRequest _$CreatePromotionRequestFromJson(
   isTaxInclusive: json['is_tax_inclusive'] as bool?,
   type: $enumDecode(_$PromotionTypeEnumMap, json['type']),
   status: $enumDecodeNullable(_$PromotionStatusEnumMap, json['status']),
-  startsAt:
-      json['starts_at'] == null
-          ? null
-          : DateTime.parse(json['starts_at'] as String),
-  endsAt:
-      json['ends_at'] == null
-          ? null
-          : DateTime.parse(json['ends_at'] as String),
+  startsAt: json['starts_at'] == null
+      ? null
+      : DateTime.parse(json['starts_at'] as String),
+  endsAt: json['ends_at'] == null
+      ? null
+      : DateTime.parse(json['ends_at'] as String),
   applicationMethod: $enumDecode(
     _$ApplicationMethodEnumMap,
     json['application_method'],
   ),
-  rules:
-      (json['rules'] as List<dynamic>?)
-          ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  targetRules:
-      (json['target_rules'] as List<dynamic>?)
-          ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  buyRules:
-      (json['buy_rules'] as List<dynamic>?)
-          ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  rules: (json['rules'] as List<dynamic>?)
+      ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  targetRules: (json['target_rules'] as List<dynamic>?)
+      ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  buyRules: (json['buy_rules'] as List<dynamic>?)
+      ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
+      .toList(),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 
@@ -243,26 +229,21 @@ UpdatePromotionRequest _$UpdatePromotionRequestFromJson(
   isAutomatic: json['is_automatic'] as bool?,
   isTaxInclusive: json['is_tax_inclusive'] as bool?,
   status: $enumDecodeNullable(_$PromotionStatusEnumMap, json['status']),
-  startsAt:
-      json['starts_at'] == null
-          ? null
-          : DateTime.parse(json['starts_at'] as String),
-  endsAt:
-      json['ends_at'] == null
-          ? null
-          : DateTime.parse(json['ends_at'] as String),
-  rules:
-      (json['rules'] as List<dynamic>?)
-          ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  targetRules:
-      (json['target_rules'] as List<dynamic>?)
-          ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  buyRules:
-      (json['buy_rules'] as List<dynamic>?)
-          ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  startsAt: json['starts_at'] == null
+      ? null
+      : DateTime.parse(json['starts_at'] as String),
+  endsAt: json['ends_at'] == null
+      ? null
+      : DateTime.parse(json['ends_at'] as String),
+  rules: (json['rules'] as List<dynamic>?)
+      ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  targetRules: (json['target_rules'] as List<dynamic>?)
+      ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  buyRules: (json['buy_rules'] as List<dynamic>?)
+      ?.map((e) => PromotionRule.fromJson(e as Map<String, dynamic>))
+      .toList(),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 
@@ -291,10 +272,9 @@ Map<String, dynamic> _$PromotionResponseToJson(PromotionResponse instance) =>
 
 PromotionsResponse _$PromotionsResponseFromJson(Map<String, dynamic> json) =>
     PromotionsResponse(
-      promotions:
-          (json['promotions'] as List<dynamic>)
-              .map((e) => Promotion.fromJson(e as Map<String, dynamic>))
-              .toList(),
+      promotions: (json['promotions'] as List<dynamic>)
+          .map((e) => Promotion.fromJson(e as Map<String, dynamic>))
+          .toList(),
       count: (json['count'] as num).toInt(),
       offset: (json['offset'] as num).toInt(),
       limit: (json['limit'] as num).toInt(),

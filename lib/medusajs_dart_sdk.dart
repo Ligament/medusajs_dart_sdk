@@ -1,5 +1,3 @@
-library medusajs_dart_sdk;
-
 // Core SDK exports
 export 'src/medusa_client.dart';
 export 'src/client/client.dart';

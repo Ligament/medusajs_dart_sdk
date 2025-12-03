@@ -382,7 +382,7 @@ class AutoBatchManager {
     _resetBatchTimer();
 
     // Execute immediately if batch is full
-    if (_batchManager.isFull) {
+    if (_batchManager.isFull || _completers.length >= _maxBatchSize) {
       _executeBatch();
     }
 

@@ -1,7 +1,7 @@
-///  Admin Promotion models from @medusajs/types v2.10.1
-///
-/// Comprehensive promotion management models following Medusa v2.10 specifications.
-/// Covers promotions, campaigns, application methods, rules, and promotional strategies.
+// Admin Promotion models from @medusajs/types v2.10.1
+//
+// Comprehensive promotion management models following Medusa v2.10 specifications.
+// Covers promotions, campaigns, application methods, rules, and promotional strategies.
 
 import 'package:json_annotation/json_annotation.dart';
 

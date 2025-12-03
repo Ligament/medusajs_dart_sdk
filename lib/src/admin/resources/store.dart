@@ -90,9 +90,10 @@ class AdminStoreResource extends AdminResource {
       headers: headers,
     );
 
-    final items = (response['payment_providers'] as List? ?? [])
-        .map((json) => json as Map<String, dynamic>)
-        .toList();
+    final items =
+        (response['payment_providers'] as List? ?? [])
+            .map((json) => json as Map<String, dynamic>)
+            .toList();
 
     return PaginatedResponse(
       data: items,
@@ -113,9 +114,10 @@ class AdminStoreResource extends AdminResource {
       headers: headers,
     );
 
-    final items = (response['tax_providers'] as List? ?? [])
-        .map((json) => json as Map<String, dynamic>)
-        .toList();
+    final items =
+        (response['tax_providers'] as List? ?? [])
+            .map((json) => json as Map<String, dynamic>)
+            .toList();
 
     return PaginatedResponse(
       data: items,

@@ -17,9 +17,39 @@ class MedusaClient {
   String? _token;
 
   MedusaClient(this.config, {MedusaCache? cache})
-    : _logger = config.logger,
+    : _logger = config.logger ?? (config.debug ? ConsoleLogger() : null),
       _cache = cache {
     _httpClient = http.Client();
+  }
+
+  Map<String, String> _encodeQueryParameters(Map<String, dynamic>? query) {
+    if (query == null || query.isEmpty) return const {};
+
+    final result = <String, String>{};
+
+    void visit(String key, dynamic value) {
+      if (value == null) return;
+
+      if (value is DateTime) {
+        result[key] = value.toIso8601String();
+      } else if (value is Iterable) {
+        for (final entry in value) {
+          visit('$key[]', entry);
+        }
+      } else if (value is Map) {
+        for (final entry in value.entries) {
+          final nestedKey = entry.key.toString();
+          final compoundKey = key.isEmpty ? nestedKey : '$key[$nestedKey]';
+          visit(compoundKey, entry.value);
+        }
+      } else {
+        result[key] = value.toString();
+      }
+    }
+
+    query.forEach((key, value) => visit(key, value));
+
+    return result;
   }
 
   /// Make an HTTP request to the Medusa API with retry logic
@@ -295,13 +325,18 @@ class MedusaClient {
 
   Uri _buildUri(String path, QueryParams? query) {
     final baseUri = Uri.parse(config.baseUrl);
-    final fullPath = path.startsWith('/') ? path : '/$path';
+    final basePath = baseUri.path == '/' ? '' : baseUri.path;
+    final sanitizedBasePath =
+        basePath.endsWith('/')
+            ? basePath.substring(0, basePath.length - 1)
+            : basePath;
+    final normalizedPath = path.startsWith('/') ? path : '/$path';
+    final combinedPath = '$sanitizedBasePath$normalizedPath';
+    final queryParameters = _encodeQueryParameters(query);
 
     return baseUri.replace(
-      path: baseUri.path + fullPath,
-      queryParameters: query?.map(
-        (key, value) => MapEntry(key, value.toString()),
-      ),
+      path: combinedPath.isEmpty ? '/' : combinedPath,
+      queryParameters: queryParameters.isEmpty ? null : queryParameters,
     );
   }
 
@@ -311,33 +346,72 @@ class MedusaClient {
       'Accept': 'application/json',
     };
 
-    // Add global headers
-    if (config.globalHeaders != null) {
-      requestHeaders.addAll(config.globalHeaders!);
-    }
+    _applyHeaderMap(_apiKeyHeader(), requestHeaders);
 
-    // Add publishable key header
-    if (config.publishableKey != null) {
+    if (config.publishableKey?.isNotEmpty == true) {
       requestHeaders[publishableKeyHeader] = config.publishableKey!;
     }
 
-    // Add API key header
-    if (config.apiKey != null) {
-      requestHeaders['Authorization'] = 'Bearer ${config.apiKey}';
+    _applyHeaderMap(config.globalHeaders, requestHeaders);
+
+    if (config.auth?.type != AuthType.session) {
+      final token = await getToken();
+      if (token != null && token.isNotEmpty) {
+        requestHeaders['Authorization'] = 'Bearer $token';
+      }
     }
 
-    // Add JWT token header
-    final token = await getToken();
-    if (token != null) {
-      requestHeaders['Authorization'] = 'Bearer $token';
-    }
-
-    // Add custom headers
-    if (headers != null) {
-      requestHeaders.addAll(headers);
-    }
+    _applyHeaderMap(headers, requestHeaders);
 
     return requestHeaders;
+  }
+
+  void _applyHeaderMap(
+    Map<String, dynamic>? source,
+    Map<String, String> target,
+  ) {
+    if (source == null) return;
+
+    source.forEach((key, value) {
+      if (value == null) {
+        target.remove(key);
+        return;
+      }
+
+      if (value is String) {
+        target[key] = value;
+        return;
+      }
+
+      if (value is Iterable) {
+        final joined = value
+            .where((element) => element != null)
+            .map((element) => element.toString())
+            .join(',');
+        if (joined.isNotEmpty) {
+          target[key] = joined;
+        }
+        return;
+      }
+
+      if (value is Map && value.containsKey('value')) {
+        final explicit = value['value'];
+        if (explicit is String) {
+          target[key] = explicit;
+        }
+        return;
+      }
+
+      target[key] = value.toString();
+    });
+  }
+
+  Map<String, String> _apiKeyHeader() {
+    final key = config.apiKey;
+    if (key == null || key.isEmpty) return const {};
+
+    final encoded = base64Encode(utf8.encode('$key:'));
+    return {'Authorization': 'Basic $encoded'};
   }
 
   String? _encodeBody(dynamic body, Map<String, String> headers) {

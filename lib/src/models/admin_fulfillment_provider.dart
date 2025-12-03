@@ -1,7 +1,7 @@
-/// Canonical Admin Fulfillment Provider models based on @medusajs/types v2.10.1
-///
-/// Provides fulfillment provider management functionality with complete
-/// API compatibility and type safety.
+// Canonical Admin Fulfillment Provider models based on @medusajs/types v2.10.1
+//
+// Provides fulfillment provider management functionality with complete
+// API compatibility and type safety.
 
 import 'package:json_annotation/json_annotation.dart';
 
@@ -59,6 +59,7 @@ class AdminFulfillmentProvider extends BaseFulfillmentProvider {
   factory AdminFulfillmentProvider.fromJson(Map<String, dynamic> json) =>
       _$AdminFulfillmentProviderFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$AdminFulfillmentProviderToJson(this);
 }
 
@@ -101,6 +102,7 @@ class AdminFulfillmentProviderOption extends BaseFulfillmentProviderOption {
   factory AdminFulfillmentProviderOption.fromJson(Map<String, dynamic> json) =>
       _$AdminFulfillmentProviderOptionFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$AdminFulfillmentProviderOptionToJson(this);
 }
 

@@ -59,13 +59,15 @@ class StoreOrderResource extends StoreResource {
   /// Request order transfer
   Future<StoreOrder?> requestTransfer(
     String id,
-    String email, {
+    Map<String, dynamic> body, {
+    Map<String, dynamic>? query,
     ClientHeaders? headers,
   }) async {
     final response = await client.fetch<Map<String, dynamic>>(
       '$resourcePath/$id/transfer',
       method: 'POST',
-      body: {'email': email},
+      body: body,
+      query: query,
       headers: headers,
     );
 

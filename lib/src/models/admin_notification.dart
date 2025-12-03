@@ -1,7 +1,7 @@
-/// Canonical Admin Notification models based on @medusajs/types v2.10.1
-///
-/// Provides read-only notification management functionality with complete
-/// API compatibility and type safety.
+// Canonical Admin Notification models based on @medusajs/types v2.10.1
+//
+// Provides read-only notification management functionality with complete
+// API compatibility and type safety.
 
 import 'package:json_annotation/json_annotation.dart';
 

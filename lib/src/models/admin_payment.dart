@@ -1,7 +1,7 @@
-/// Canonical Admin Payment models based on @medusajs/types v2.10.1
-///
-/// Provides comprehensive payment management functionality with complete
-/// API compatibility and type safety.
+// Canonical Admin Payment models based on @medusajs/types v2.10.1
+//
+// Provides comprehensive payment management functionality with complete
+// API compatibility and type safety.
 
 import 'package:json_annotation/json_annotation.dart';
 
@@ -621,26 +621,51 @@ class AdminPaymentFilters {
   Map<String, dynamic> toQueryParameters() {
     final params = <String, dynamic>{};
 
-    if (q != null) params['q'] = q;
-    if (id != null && id!.isNotEmpty) params['id'] = id;
-    if (orderId != null && orderId!.isNotEmpty) params['order_id'] = orderId;
-    if (cartId != null && cartId!.isNotEmpty) params['cart_id'] = cartId;
-    if (customerId != null && customerId!.isNotEmpty)
+    if (q != null) {
+      params['q'] = q;
+    }
+    if (id != null && id!.isNotEmpty) {
+      params['id'] = id;
+    }
+    if (orderId != null && orderId!.isNotEmpty) {
+      params['order_id'] = orderId;
+    }
+    if (cartId != null && cartId!.isNotEmpty) {
+      params['cart_id'] = cartId;
+    }
+    if (customerId != null && customerId!.isNotEmpty) {
       params['customer_id'] = customerId;
-    if (providerId != null && providerId!.isNotEmpty)
+    }
+    if (providerId != null && providerId!.isNotEmpty) {
       params['provider_id'] = providerId;
-    if (currencyCode != null && currencyCode!.isNotEmpty)
+    }
+    if (currencyCode != null && currencyCode!.isNotEmpty) {
       params['currency_code'] = currencyCode;
-    if (status != null && status!.isNotEmpty) params['status'] = status;
-    if (createdAt != null) params['created_at'] = createdAt!.toIso8601String();
-    if (updatedAt != null) params['updated_at'] = updatedAt!.toIso8601String();
-    if (offset != null) params['offset'] = offset;
-    if (limit != null) params['limit'] = limit;
-    if (order != null) params['order'] = order;
-    if (expand != null && expand!.isNotEmpty)
+    }
+    if (status != null && status!.isNotEmpty) {
+      params['status'] = status;
+    }
+    if (createdAt != null) {
+      params['created_at'] = createdAt!.toIso8601String();
+    }
+    if (updatedAt != null) {
+      params['updated_at'] = updatedAt!.toIso8601String();
+    }
+    if (offset != null) {
+      params['offset'] = offset;
+    }
+    if (limit != null) {
+      params['limit'] = limit;
+    }
+    if (order != null) {
+      params['order'] = order;
+    }
+    if (expand != null && expand!.isNotEmpty) {
       params['expand'] = expand!.join(',');
-    if (fields != null && fields!.isNotEmpty)
+    }
+    if (fields != null && fields!.isNotEmpty) {
       params['fields'] = fields!.join(',');
+    }
 
     return params;
   }

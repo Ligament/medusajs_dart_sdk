@@ -85,10 +85,7 @@ class AdminCampaignResource extends AdminResource {
   }
 
   /// Launch a campaign
-  Future<Campaign?> launch(
-    String id, {
-    ClientHeaders? headers,
-  }) async {
+  Future<Campaign?> launch(String id, {ClientHeaders? headers}) async {
     return await updateGeneric<Campaign>(
       id: id,
       body: {'status': 'active'},
@@ -100,10 +97,7 @@ class AdminCampaignResource extends AdminResource {
   }
 
   /// Pause a campaign
-  Future<Campaign?> pause(
-    String id, {
-    ClientHeaders? headers,
-  }) async {
+  Future<Campaign?> pause(String id, {ClientHeaders? headers}) async {
     return await updateGeneric<Campaign>(
       id: id,
       body: {'status': 'paused'},

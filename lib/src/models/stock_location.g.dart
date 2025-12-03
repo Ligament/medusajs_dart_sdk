@@ -10,17 +10,15 @@ StockLocation _$StockLocationFromJson(Map<String, dynamic> json) =>
     StockLocation(
       id: json['id'] as String,
       name: json['name'] as String,
-      address:
-          json['address'] == null
-              ? null
-              : Address.fromJson(json['address'] as Map<String, dynamic>),
+      address: json['address'] == null
+          ? null
+          : Address.fromJson(json['address'] as Map<String, dynamic>),
       metadata: json['metadata'] as Map<String, dynamic>?,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
-      deletedAt:
-          json['deleted_at'] == null
-              ? null
-              : DateTime.parse(json['deleted_at'] as String),
+      deletedAt: json['deleted_at'] == null
+          ? null
+          : DateTime.parse(json['deleted_at'] as String),
     );
 
 Map<String, dynamic> _$StockLocationToJson(StockLocation instance) =>
@@ -38,10 +36,9 @@ CreateStockLocationRequest _$CreateStockLocationRequestFromJson(
   Map<String, dynamic> json,
 ) => CreateStockLocationRequest(
   name: json['name'] as String,
-  address:
-      json['address'] == null
-          ? null
-          : Address.fromJson(json['address'] as Map<String, dynamic>),
+  address: json['address'] == null
+      ? null
+      : Address.fromJson(json['address'] as Map<String, dynamic>),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 
@@ -57,10 +54,9 @@ UpdateStockLocationRequest _$UpdateStockLocationRequestFromJson(
   Map<String, dynamic> json,
 ) => UpdateStockLocationRequest(
   name: json['name'] as String?,
-  address:
-      json['address'] == null
-          ? null
-          : Address.fromJson(json['address'] as Map<String, dynamic>),
+  address: json['address'] == null
+      ? null
+      : Address.fromJson(json['address'] as Map<String, dynamic>),
   metadata: json['metadata'] as Map<String, dynamic>?,
 );
 
