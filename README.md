@@ -2,7 +2,9 @@
 
 A comprehensive Dart SDK for [Medusa.js](https://medusajs.com), the open-source headless commerce platform. This SDK provides type-safe access to all Medusa APIs including storefront, admin, and authentication operations.
 
+[![CI](https://github.com/Ligament/medusajs_dart_sdk/workflows/CI/badge.svg)](https://github.com/Ligament/medusajs_dart_sdk/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Dart Version](https://img.shields.io/badge/dart-%3E%3D3.8.0-blue.svg)](https://dart.dev)
 
 ## Features
 
@@ -312,6 +314,41 @@ final json = product.toJson();
 ## Contributing
 
 We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+### Continuous Integration
+
+This project uses GitHub Actions for continuous integration. All pull requests and commits are automatically tested.
+
+**How to check CI/CD status:**
+
+1. **On GitHub**: Check the badges at the top of this README or visit the [Actions tab](https://github.com/Ligament/medusajs_dart_sdk/actions)
+2. **For Pull Requests**: Scroll to the bottom of your PR to see the status checks
+3. **For Commits**: Click on the ✓ or ✗ next to any commit to see detailed results
+
+**What's being checked:**
+- ✅ Code formatting (`dart format`)
+- ✅ Static analysis (`dart analyze`)
+- ✅ Code generation is up to date (`build_runner`)
+- ✅ All tests pass (`dart test`)
+- ✅ Package can be published (`dart pub publish --dry-run`)
+
+**Running checks locally before pushing:**
+```bash
+# Format code
+dart format .
+
+# Run analysis
+dart analyze
+
+# Generate code
+dart run build_runner build --delete-conflicting-outputs
+
+# Run tests
+dart test
+
+# Check if package is ready to publish
+dart pub publish --dry-run
+```
 
 ## License
 

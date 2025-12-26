@@ -1,0 +1,52 @@
+name: PR Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  quick-check:
+    name: Quick PR validation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 'stable'
+      
+      - name: Install dependencies
+        run: dart pub get
+      
+      - name: Check formatting (fast)
+        run: dart format --output=none --set-exit-if-changed .
+      
+      - name: Quick analysis
+        run: dart analyze --no-fatal-warnings
+      
+      - name: Generate code if needed
+        run: dart run build_runner build --delete-conflicting-outputs
+      
+      - name: Run tests with summary
+        run: |
+          echo "Running tests..."
+          dart test --reporter=expanded || echo "⚠️ Some tests failed"
+      
+      - name: PR size check
+        run: |
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | wc -l)
+          CHANGED_LINES=$(git diff --stat origin/${{ github.base_ref }}...HEAD | tail -1 | awk '{print $4+$6}')
+          echo "📊 PR Statistics:"
+          echo "  - Files changed: $CHANGED_FILES"
+          echo "  - Lines changed: $CHANGED_LINES"
+          if [ "$CHANGED_FILES" -gt 50 ]; then
+            echo "⚠️ Warning: This PR modifies $CHANGED_FILES files. Consider breaking it into smaller PRs."
+          fi
+          if [ "$CHANGED_LINES" -gt 1000 ]; then
+            echo "⚠️ Warning: This PR has $CHANGED_LINES line changes. Consider breaking it into smaller PRs."
+          fi

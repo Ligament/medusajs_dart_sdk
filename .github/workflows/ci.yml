@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test on Dart ${{ matrix.dart-version }}
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        dart-version: ['3.8.0', 'stable']
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ matrix.dart-version }}
+      
+      - name: Print Dart version
+        run: dart --version
+      
+      - name: Install dependencies
+        run: dart pub get
+      
+      - name: Verify dependencies
+        run: dart pub deps
+      
+      - name: Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+      
+      - name: Check formatting
+        run: dart format --set-exit-if-changed .
+      
+      - name: Analyze code
+        run: dart analyze --fatal-infos
+      
+      - name: Run tests
+        run: dart test
+      
+      - name: Test coverage (on main branch only)
+        if: matrix.dart-version == 'stable' && github.ref == 'refs/heads/main'
+        run: |
+          dart pub global activate coverage
+          dart pub global run coverage:test_with_coverage
+      
+      - name: Upload coverage to Codecov
+        if: matrix.dart-version == 'stable' && github.ref == 'refs/heads/main'
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage/lcov.info
+          fail_ci_if_error: false
+
+  build-check:
+    name: Build check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 'stable'
+      
+      - name: Install dependencies
+        run: dart pub get
+      
+      - name: Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+      
+      - name: Check if build outputs are up to date
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Generated files are not up to date. Please run 'dart run build_runner build' locally."
+            git status
+            exit 1
+          fi
+      
+      - name: Dry run publish
+        run: dart pub publish --dry-run
