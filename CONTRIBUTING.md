@@ -163,6 +163,29 @@ dart format .
 3. Fill out the pull request template
 4. Link any related issues
 
+### 7. Continuous Integration Checks
+
+Once you submit your pull request, automated CI/CD checks will run via GitHub Actions:
+
+**Automated Checks:**
+- **Formatting**: Ensures code follows Dart formatting standards
+- **Analysis**: Runs static code analysis to catch potential issues
+- **Code Generation**: Verifies generated code is up to date
+- **Tests**: Runs the complete test suite
+- **Build Validation**: Ensures the package can be published
+
+**Checking CI Status:**
+- View the status checks at the bottom of your pull request
+- Click "Details" next to any check to see logs and error messages
+- All checks must pass before the PR can be merged
+- If checks fail, review the error messages and push fixes to your branch
+
+**Common CI Failures and Fixes:**
+- **Format check fails**: Run `dart format .` locally and commit
+- **Analysis fails**: Run `dart analyze` and fix reported issues
+- **Tests fail**: Run `dart test` locally to debug failing tests
+- **Generated code outdated**: Run `dart run build_runner build --delete-conflicting-outputs`
+
 ## Code Style
 
 ### Dart Conventions
