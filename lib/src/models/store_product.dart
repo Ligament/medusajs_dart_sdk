@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'store_product.g.dart';
@@ -247,7 +249,7 @@ class StoreProductVariant {
 
   /// The variant's calculated price (if provided in context)
   @JsonKey(name: 'calculated_price')
-  final Map<String, dynamic>? calculatedPrice;
+  final BaseCalculatedPriceSet? calculatedPrice;
 
   /// The date the variant was created (nullable string)
   @JsonKey(name: 'created_at')
@@ -704,4 +706,100 @@ class StoreCollection {
 
   @override
   String toString() => 'StoreCollection(id: $id, title: $title)';
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class BaseCalculatedPriceSet {
+  /// The ID of the price set
+  final String id;
+
+  /// The amount of the calculated price, or null if there isn't a calculated price
+  final double? calculatedAmount;
+
+  /// The amount of the original price, or null if there isn't a calculated price
+  final double? originalAmount;
+
+  /// The amount of the original price with taxes included
+  final double? originalAmountWithTax;
+
+  /// The amount of the original price without taxes included
+  final double? originalAmountWithoutTax;
+
+  /// The currency code of the calculated price, or null if there isn't a calculated price
+  final String? currencyCode;
+
+  /// Whether the calculated price is associated with a price list
+  final bool? isCalculatedPricePriceList;
+
+  /// Whether the calculated price is tax inclusive
+  final bool? isCalculatedPriceTaxInclusive;
+
+  /// The amount of the calculated price with taxes included
+  final double? calculatedAmountWithTax;
+
+  /// The amount of the calculated price without taxes included
+  final double? calculatedAmountWithoutTax;
+
+  /// Whether the original price is associated with a price list
+  final bool? isOriginalPricePriceList;
+
+  /// Whether the original price is tax inclusive
+  final bool? isOriginalPriceTaxInclusive;
+
+  /// The details of the calculated price
+  final PriceDetails? calculatedPrice;
+
+  /// The details of the original price
+  final PriceDetails? originalPrice;
+
+  const BaseCalculatedPriceSet({
+    required this.id,
+    this.isCalculatedPricePriceList,
+    this.isCalculatedPriceTaxInclusive,
+    this.calculatedAmount,
+    this.calculatedAmountWithTax,
+    this.calculatedAmountWithoutTax,
+    this.isOriginalPricePriceList,
+    this.isOriginalPriceTaxInclusive,
+    this.originalAmount,
+    this.originalAmountWithTax,
+    this.originalAmountWithoutTax,
+    this.currencyCode,
+    this.calculatedPrice,
+    this.originalPrice,
+  });
+
+  factory BaseCalculatedPriceSet.fromJson(Map<String, dynamic> json) =>
+      _$BaseCalculatedPriceSetFromJson(json);
+  Map<String, dynamic> toJson() => _$BaseCalculatedPriceSetToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.snake)
+class PriceDetails {
+  /// The ID of the price selected
+  final String? id;
+
+  /// The ID of the associated price list, if any
+  final String? priceListId;
+
+  /// The type of the associated price list, if any
+  final String? priceListType;
+
+  /// The minimum quantity field defined on a price
+  final int? minQuantity;
+
+  /// The maximum quantity field defined on a price
+  final int? maxQuantity;
+
+  const PriceDetails({
+    this.id,
+    this.priceListId,
+    this.priceListType,
+    this.minQuantity,
+    this.maxQuantity,
+  });
+
+  factory PriceDetails.fromJson(Map<String, dynamic> json) =>
+      _$PriceDetailsFromJson(json);
+  Map<String, dynamic> toJson() => _$PriceDetailsToJson(this);
 }

@@ -58,7 +58,7 @@ export 'user.dart';
 // export 'product.dart';
 export 'product_tag.dart';
 export 'product_type.dart';
-export 'product_variant.dart';
+export 'product_variant.dart' hide PriceDetails;
 export 'notification.dart';
 export 'payment_collection.dart'
     hide PaymentSessionStatus; // Avoid conflict with common.dart
